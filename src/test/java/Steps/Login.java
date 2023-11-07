@@ -2,6 +2,8 @@ package Steps;
 
 import PageObjects.LoginPageObject;
 import Utils.BaseTest;
+import com.aventstack.extentreports.MediaEntityBuilder;
+import com.aventstack.extentreports.Status;
 import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
@@ -10,7 +12,9 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
@@ -70,5 +74,38 @@ public class Login extends LoginPageObject {
     @Then("^select first show$")
     public void select_first_show(){
         clickFirstShow();
+    }
+
+    @Then("^Play show$")
+    public void play_show(){
+        playShow();
+    }
+
+    @Then("^Pause episode$")
+    public void pause_episode(){
+        pauseEpisode();
+    }
+
+    @Then("verify whether the episode is playing or not")
+    public void verifyWhetherTheEpisodeIsPlayingOrNot() throws IOException, InterruptedException {
+        try {
+            Thread.sleep(2000);
+            Assert.assertTrue(testImageComparison(8000),"Episode is Playing");
+        }
+        catch(Throwable e)
+        {
+            Assert.fail(e.getMessage());
+        }
+
+    }
+
+    @Then("Verify whether the episode is paused on pausing it")
+    public void verifyWhetherTheEpisodeIsPausedOrNot() throws IOException, InterruptedException {
+        episodeIsPausedOnPausingIt();
+    }
+
+    @Then("verify fast forward is working")
+    public void verify_fast_forward_is_working() throws IOException, InterruptedException {
+        verifyFastForwardIsWorking();
     }
 }

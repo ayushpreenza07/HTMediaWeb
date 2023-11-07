@@ -1,7 +1,7 @@
 Feature: OTTWeb
 
-  @Login
-  Scenario: Login Demo
+  @sonyliv
+  Scenario: Sony LIV
     Given I navigate to application
     When I click on Sign In button
     And I enter username and password
@@ -10,3 +10,8 @@ Feature: OTTWeb
     Then I click on Premium
     And Select "sonylive"
     Then select first show
+    And Play show
+    Then verify whether the episode is playing or not
+    Then verify fast forward is working
+    Then Pause episode
+    And Verify whether the episode is paused on pausing it
