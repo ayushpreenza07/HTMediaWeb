@@ -6,15 +6,11 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 
 public class BaseTest {
-    public WebDriver driver;
-
-
-    public void setUp() {
+    public static WebDriver driver;
+    public static void setUp() {
         System.setProperty("webdriver.chrome.driver", "src/main/resources/chromedriver.exe");
         driver = new ChromeDriver();
     }
-
-
     public void tearDown() {
         if (driver != null) {
             driver.quit();
