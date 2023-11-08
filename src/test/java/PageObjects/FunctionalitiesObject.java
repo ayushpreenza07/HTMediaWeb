@@ -21,26 +21,10 @@ public class FunctionalitiesObject extends BaseTest {
     public By seekBar = By.xpath("//div[@class='playerslider']");
     public By backButton = By.xpath("//span[@class='videoBackBtn']");
     public By showTitle = By.xpath("//div[@class='topBarPlayer topbarplayerA']//h2");
-
-    public void clickResume() {
-        try {
-            driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-            WebDriverWait wait = new WebDriverWait(BaseTest.driver, 25);
-            wait.until(ExpectedConditions.visibilityOfElementLocated(playButton));
-            boolean displayed = driver.findElement(playButton).isDisplayed();
-            if (displayed)
-                driver.findElement(playButton).click();
-            else {
-                wait.until(ExpectedConditions.visibilityOfElementLocated(resumeButton));
-                boolean displayed1 = driver.findElement(resumeButton).isDisplayed();
-                if (displayed1)
-                    driver.findElement(resumeButton).click();
-                driver.findElement(resumeButton).click();
-            }
-        } catch (Exception e) {
-            Assert.fail("Play button not clicked");
-        }
-    }
+    public By exitFullScreenBtn = By.xpath("//i[@class='exitFullScreen']");
+    public By languageBtn = By.xpath("//span[contains(text(),'Language')]");
+    public By audioOptionsTitle = By.xpath("//li[contains(text(),'Audio')]");
+    public By languageList = By.xpath("//li[contains(text(),'Audio')]//parent::ul[@class='titlesAudioHead']//li");
 
     public void clickFullscreen() {
         try {
@@ -53,19 +37,6 @@ public class FunctionalitiesObject extends BaseTest {
         } catch (Throwable e) {
             Assert.fail("full screen button not displayed");
         }
-    }
-
-    public void verifyFastForward() {
-        try {
-            Actions builder = new Actions(driver);
-            WebElement from = driver.findElement(By.id("column-a"));
-            WebElement to = driver.findElement(By.id("column-b"));
-//Perform drag and drop
-            builder.dragAndDrop(from, to).perform();
-        } catch (Throwable e) {
-            Assert.fail("fast forward is not verified");
-        }
-
     }
 
     public void nextEpisode() {
@@ -125,5 +96,39 @@ public class FunctionalitiesObject extends BaseTest {
         String TitleName = driver.findElement(showTitle).getText();
         System.out.println("Title Name - " + TitleName);
         return TitleName;
+    }
+
+    public void verifyFullScreen() {
+        try {
+            driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+            driver.findElement(exitFullScreenBtn).isDisplayed();
+        } catch (Throwable e) {
+            Assert.fail("Video is not in Full screen mode");
+        }
+    }
+
+    public void clickLanguage() {
+        try {
+            driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+            WebDriverWait wait = new WebDriverWait(BaseTest.driver, 25);
+            wait.until(ExpectedConditions.visibilityOfElementLocated(languageBtn));
+            boolean displayed = driver.findElement(languageBtn).isDisplayed();
+            if (displayed)
+                driver.findElement(languageBtn).click();
+        } catch (Throwable e) {
+            Assert.fail("Language button not displaying/working");
+        }
+    }
+
+    public void verifyAudioOptions() {
+        try {
+            driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+            WebDriverWait wait = new WebDriverWait(BaseTest.driver, 25);
+            wait.until(ExpectedConditions.visibilityOfElementLocated(audioOptionsTitle));
+            driver.findElement(audioOptionsTitle).isDisplayed();
+            driver.findElement(languageList).isDisplayed();
+        } catch (Throwable e) {
+            Assert.fail("Audio Options are not present");
+        }
     }
 }
