@@ -25,6 +25,7 @@ public class FunctionalitiesObject extends BaseTest {
     public By languageBtn = By.xpath("//span[contains(text(),'Language')]");
     public By audioOptionsTitle = By.xpath("//li[contains(text(),'Audio')]");
     public By languageList = By.xpath("//li[contains(text(),'Audio')]//parent::ul[@class='titlesAudioHead']//li");
+    public By subtitleOptionsTitle = By.xpath("//ul[@class='titlesAudioHead']//li[contains(text(),'Subtitles')]");
 
     public void clickFullscreen() {
         try {
@@ -129,6 +130,26 @@ public class FunctionalitiesObject extends BaseTest {
             driver.findElement(languageList).isDisplayed();
         } catch (Throwable e) {
             Assert.fail("Audio Options are not present");
+        }
+    }
+    public void verifysubtitleOptions(){
+        try {
+            driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+            WebDriverWait wait = new WebDriverWait(BaseTest.driver, 25);
+            wait.until(ExpectedConditions.visibilityOfElementLocated(subtitleOptionsTitle));
+            driver.findElement(subtitleOptionsTitle).isDisplayed();
+        } catch (Throwable e) {
+            Assert.fail("Subtitle Options are not present");
+        }
+    }
+    public void clickShowBackButton(){
+        try {
+            driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+            boolean displayed = driver.findElement(backButton).isDisplayed();
+            if (displayed)
+                driver.findElement(backButton).click();
+        } catch (Throwable e) {
+            Assert.fail("Back button not displayed/working");
         }
     }
 }

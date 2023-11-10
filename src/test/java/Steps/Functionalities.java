@@ -47,12 +47,24 @@ public class Functionalities extends FunctionalitiesObject {
     public void verify_show_is_in_full_screen() {
         verifyFullScreen();
     }
+
     @And("click on Language Option")
-    public void click_on_Language_Option(){
+    public void click_on_Language_Option() {
         clickLanguage();
     }
+
     @And("verify Audio options are present")
-    public void verify_Audio_options_are_present(){
+    public void verify_Audio_options_are_present() {
         verifyAudioOptions();
+    }
+
+    @And("verify subtitles options are present")
+    public void verify_subtitles_options_are_present() {
+        verifysubtitleOptions();
+    }
+
+    @And("click on show back button")
+    public void click_on_show_back_button() {
+        clickShowBackButton();
     }
 }
