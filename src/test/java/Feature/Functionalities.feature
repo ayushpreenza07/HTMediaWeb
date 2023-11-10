@@ -8,7 +8,7 @@ Feature: OTT Play Functionalities
       | username   | password     |
       | 9100381062 | Password@123 |
     Then I click on Premium
-    And Select "sonylive"
+    And Select "SonyLIV"
     Then select first show
     And Play show
     And Get the title of show
@@ -23,7 +23,7 @@ Feature: OTT Play Functionalities
       | username   | password     |
       | 9100381062 | Password@123 |
     Then I click on Premium
-    And Select "sonylive"
+    And Select "SonyLIV"
     Then select first show
     And Play show
     And verify ott play brand logo
@@ -36,7 +36,7 @@ Feature: OTT Play Functionalities
       | username   | password     |
       | 9100381062 | Password@123 |
     Then I click on Premium
-    And Select "sonylive"
+    And Select "SonyLIV"
     Then select first show
     And Play show
     And verify seek bar
@@ -50,7 +50,7 @@ Feature: OTT Play Functionalities
       | username   | password     |
       | 9100381062 | Password@123 |
     Then I click on Premium
-    And Select "sonylive"
+    And Select "SonyLIV"
     Then select first show
     And Play show
     Then verify back button
@@ -63,24 +63,60 @@ Feature: OTT Play Functionalities
       | username   | password     |
       | 9100381062 | Password@123 |
     Then I click on Premium
-    And Select "sonylive"
+    And Select "SonyLIV"
     Then select first show
     And Play show
     Then click on fullscreen
     And verify show is in full screen
 
   @Func
-  Scenario: Verify Audio language menu in the show
+  Scenario: Verify Audio language menu in the show settings
     Given I navigate to application
     When I click on Sign In button
     And I enter username and password
       | username   | password     |
       | 9100381062 | Password@123 |
     Then I click on Premium
-    And Select "sonylive"
+    And Select "SonyLIV"
     Then select first show
     And Play show
     Then verify whether the episode is playing or not
     Then Pause episode
     Then click on Language Option
     And verify Audio options are present
+
+  @Func
+  Scenario: Verify subtitles menu in the show settings
+    Given I navigate to application
+    When I click on Sign In button
+    And I enter username and password
+      | username   | password     |
+      | 9100381062 | Password@123 |
+    Then I click on Premium
+    And Select "LIONSGATE PLAY"
+    Then select first show
+    And Play show
+    Then verify whether the episode is playing or not
+    Then Pause episode
+    Then click on Language Option
+    And verify subtitles options are present
+
+  @Func1
+  Scenario: Verify shows playing on different vendors
+    Given I navigate to application
+    When I click on Sign In button
+    And I enter username and password
+      | username   | password     |
+      | 9100381062 | Password@123 |
+    Then I click on Premium
+    And Select "LIONSGATE PLAY"
+    Then select first show
+    And Play show
+    Then verify whether the episode is playing or not
+    Then Pause episode
+    Then click on show back button
+    Then I click on Premium
+    And Select "SonyLIV"
+    Then select first show
+    And Play show
+    Then verify whether the episode is playing or not
