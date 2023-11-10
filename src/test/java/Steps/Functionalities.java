@@ -8,20 +8,10 @@ import io.cucumber.java.en_scouse.An;
 public class Functionalities extends FunctionalitiesObject {
     String TitleName;
 
-    @Then("play the show")
-    public void play_the_show() {
-        clickResume();
-    }
-
     @Then("click on fullscreen")
     public void click_on_fullscreen() {
         clickFullscreen();
     }
-
-//    @Then("verify fast forward is working")
-//    public void verify_fast_forward() {
-//        verifyFastForward();
-//    }
 
     @Then("click on next episode")
     public void click_on_next_episode() {
@@ -53,4 +43,16 @@ public class Functionalities extends FunctionalitiesObject {
         String TitleName = getTitleName();
     }
 
+    @And("verify show is in full screen")
+    public void verify_show_is_in_full_screen() {
+        verifyFullScreen();
+    }
+    @And("click on Language Option")
+    public void click_on_Language_Option(){
+        clickLanguage();
+    }
+    @And("verify Audio options are present")
+    public void verify_Audio_options_are_present(){
+        verifyAudioOptions();
+    }
 }
