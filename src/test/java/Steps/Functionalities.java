@@ -18,10 +18,10 @@ public class Functionalities extends FunctionalitiesObject {
         clickFullscreen();
     }
 
-    @Then("verify fast forward is working")
-    public void verify_fast_forward() {
-        verifyFastForward();
-    }
+//    @Then("verify fast forward is working")
+//    public void verify_fast_forward() {
+//        verifyFastForward();
+//    }
 
     @Then("click on next episode")
     public void click_on_next_episode() {

@@ -108,4 +108,14 @@ public class Login extends LoginPageObject {
     public void verify_fast_forward_is_working() throws IOException, InterruptedException {
         verifyFastForwardIsWorking();
     }
+
+    @Then("Go full screen")
+    public void go_full_screen() throws IOException, InterruptedException {
+        fullScreen();
+    }
+
+    @Then("verify backward functionality")
+    public void backward_functionality() throws IOException, InterruptedException {
+        verifyBackwardIsWorking();
+    }
 }

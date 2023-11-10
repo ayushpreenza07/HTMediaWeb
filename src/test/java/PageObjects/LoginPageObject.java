@@ -3,10 +3,7 @@ package PageObjects;
 import Utils.BaseTest;
 import com.aventstack.extentreports.Status;
 import org.junit.Assert;
-import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.OutputType;
-import org.openqa.selenium.TakesScreenshot;
+import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -39,7 +36,11 @@ public class LoginPageObject extends BaseTest {
 
     public static By TimeDuration = By.xpath("//div[@class='playerDuration']");
     public By FastForward = By.xpath("//SPAN[@class='forwardBtn'][text()='10']");
+
+    public By BackWard = By.xpath("//SPAN[@class='rewindBtn'][text()='10']");
+    public By FullScreen = By.xpath("//SPAN[@class='controllBtns'][text()='Full Screen']");
     static Actions action;
+    static Actions action1;
     public void ClickSignIn()
     {
         try {
@@ -89,7 +90,7 @@ public class LoginPageObject extends BaseTest {
     }
 
     public void selectChannel(String asset) throws InterruptedException {
-        String xpath = "//img[contains(@src, 'https://images.ottplay.com/images/"+asset+"logohoz')]";
+        String xpath = "//img[@alt='"+asset+"']";
         System.out.println(xpath);
         JavascriptExecutor jsx = (JavascriptExecutor)driver;
         jsx.executeScript("window.scrollBy(0,450)", "");
@@ -136,8 +137,7 @@ public class LoginPageObject extends BaseTest {
             driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
             boolean displayed = driver.findElement(Play).isDisplayed();
             if(!displayed) {
-                action = new Actions(driver);
-                action.moveByOffset(200,300).build().perform();
+                action1.sendKeys(Keys.CONTROL).build().perform();
                 driver.findElement(Play).click();
             }
         }catch(Exception e) {
@@ -180,7 +180,6 @@ public class LoginPageObject extends BaseTest {
     public static void episodeIsPausedOnPausingIt()
     {
         try {
-            System.out.println(driver.findElement(TimeDuration).getText());
             List<String> s = Arrays.asList(driver.findElement(TimeDuration).getText().split("/"));
             String playDuration1 = s.get(0).trim();
             System.out.println(playDuration1);
@@ -191,7 +190,7 @@ public class LoginPageObject extends BaseTest {
             int secondsBeforeForward = Integer.parseInt(secBeforeForward);
             Thread.sleep(10000);
             action = new Actions(driver);
-            action.moveByOffset(200,300).build().perform();
+            action.sendKeys(Keys.CONTROL).build().perform();
             System.out.println(driver.findElement(TimeDuration).getText());
             List<String> s1 = Arrays.asList(driver.findElement(TimeDuration).getText().split("/"));
             String playDuration2 = s1.get(0).trim();
@@ -231,9 +230,12 @@ public class LoginPageObject extends BaseTest {
         driver.findElement(FastForward).click();
         driver.findElement(FastForward).click();
         driver.findElement(FastForward).click();
-        Thread.sleep(5000);
-        action = new Actions(driver);
-        action.moveByOffset(10,25).build().perform();
+        Thread.sleep(10000);
+        action1 = new Actions(driver);
+        action1.sendKeys(Keys.CONTROL).build().perform();
+        Thread.sleep(1000);
+//        action1.moveToElement(driver.findElement(By.xpath("//img[@alt='ottplay logo']"))).build().perform();
+
         List<String> s1 = Arrays.asList(driver.findElement(TimeDuration).getText().split("/"));
         String playDuration2 = s1.get(0).trim();
         System.out.println(playDuration2);
@@ -260,5 +262,59 @@ public class LoginPageObject extends BaseTest {
             Assert.fail(e.getMessage());
         }
         playEpisode();
+    }
+
+    public void fullScreen(){
+        try {
+            WebDriverWait wait = new WebDriverWait(driver, 25);
+            wait.until(ExpectedConditions.visibilityOfElementLocated(FullScreen));
+            driver.findElement(FullScreen).click();
+        }catch(Exception e) {
+            action = new Actions(driver);
+            action.moveByOffset(200,300).build().perform();
+            driver.findElement(FullScreen).click();
+        }
+    }
+
+
+    public void verifyBackwardIsWorking() throws InterruptedException {
+        try {
+            List<String> s = Arrays.asList(driver.findElement(TimeDuration).getText().split("/"));
+            String playDuration1 = s.get(0).trim();
+            System.out.println(playDuration1);
+            List<String> a = Arrays.asList(playDuration1.split(":"));
+            String minBeforeRewind=a.get(0).trim();
+            String secBeforeRewind=a.get(1).trim();
+            int minuteBeforeRewind = Integer.parseInt(minBeforeRewind);
+            int secondsBeforeRewind = Integer.parseInt(secBeforeRewind);
+            //==================
+
+            action1.sendKeys(Keys.CONTROL).build().perform();
+            driver.findElement(BackWard).click();
+            driver.findElement(BackWard).click();
+            Thread.sleep(10000);
+            action1.sendKeys(Keys.CONTROL).build().perform();
+            Thread.sleep(1000);
+            List<String> s1 = Arrays.asList(driver.findElement(TimeDuration).getText().split("/"));
+            String playDuration2 = s1.get(0).trim();
+            System.out.println(playDuration2);
+            List<String> a1 = Arrays.asList(playDuration2.split(":"));
+            String minAfterRewind = a1.get(0).trim();
+            String secAfterRewind = a1.get(1).trim();
+            int minuteAfterRewind = Integer.parseInt(minAfterRewind);
+            int secondsAfterRewind = Integer.parseInt(secAfterRewind);;
+            //secondsAfterForward represents seconds after forwarding video
+            //waitForElementToAppearAndClick(playAndPauseButton,type_id);
+            if (minuteAfterRewind < minuteBeforeRewind) {
+
+            } else if (secondsAfterRewind < secondsBeforeRewind) {
+
+            }else
+                Assert.fail("fast forward not working");
+
+        }
+        catch(Throwable e) {
+            Assert.fail(e.getMessage());
+        }
     }
 }

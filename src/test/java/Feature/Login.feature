@@ -11,7 +11,8 @@ Feature: OTTWeb
     And Select "sonylive"
     Then select first show
     And Play show
+    Then Go full screen
     Then verify whether the episode is playing or not
     Then verify fast forward is working
-    Then Pause episode
+    Then verify backward functionality
     And Verify whether the episode is paused on pausing it
