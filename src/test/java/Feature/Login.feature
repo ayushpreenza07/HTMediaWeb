@@ -8,7 +8,7 @@ Feature: OTTWeb
       | username    | password |
       | 9100381062 | Password@123 |
     Then I click on Premium
-    And Select "sonylive"
+    And Select "SonyLIV"
     Then select first show
     And Play show
     Then Go full screen

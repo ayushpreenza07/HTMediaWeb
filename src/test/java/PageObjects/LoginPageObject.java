@@ -24,7 +24,7 @@ public class LoginPageObject extends BaseTest {
     public By Continue = By.xpath("//INPUT[@id='btSubmit']");
     public By PasswordButton=By.xpath("//INPUT[@id='upass']");
     public By Login = By.xpath("//INPUT[@id='btnLogin']");
-    public By Premium = By.xpath("(//SPAN[@class='ottplay-108 false false'])[2]");
+    public By Premium = By.xpath("//span[@class='ottplay-108 false false']//img[@alt='Premium Logo']");
     public By firstShow = By.xpath("(//DIV[@class='subscriptionBanner_landscapeCard__grid__actionDetails__EIps_'])[1]");
     public By Resume = By.xpath("//SPAN[text()='Resume']");
 
@@ -191,7 +191,7 @@ public class LoginPageObject extends BaseTest {
             Thread.sleep(10000);
             action = new Actions(driver);
             action.sendKeys(Keys.CONTROL).build().perform();
-            System.out.println(driver.findElement(TimeDuration).getText());
+            Thread.sleep(1000);
             List<String> s1 = Arrays.asList(driver.findElement(TimeDuration).getText().split("/"));
             String playDuration2 = s1.get(0).trim();
             System.out.println(playDuration2);
