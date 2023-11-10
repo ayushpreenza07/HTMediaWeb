@@ -1,6 +1,6 @@
 Feature: OTT Play Functionalities
 
-  @Func
+  @Func1
   Scenario: Verify Next Page
     Given I navigate to application
     When I click on Sign In button
@@ -15,7 +15,7 @@ Feature: OTT Play Functionalities
     Then click on next episode
     Then verify user is on next page
 
-  @Func
+  @Func1
   Scenario: Verify OTT Play Brand logo
     Given I navigate to application
     When I click on Sign In button
@@ -101,7 +101,7 @@ Feature: OTT Play Functionalities
     Then click on Language Option
     And verify subtitles options are present
 
-  @Func1
+  @Func
   Scenario: Verify shows playing on different vendors
     Given I navigate to application
     When I click on Sign In button

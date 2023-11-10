@@ -7,8 +7,8 @@ import io.cucumber.testng.CucumberOptions;
 
 import static Utils.BaseTest.driver;
 
-@CucumberOptions(features = {"src/test/java/Feature"}, plugin = {"pretty", "html:target/cucumber"},
-        glue = "Steps",tags = "@sonyliv")
+@CucumberOptions(features = {"src/test/java/Feature"}, plugin = {"com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:"},
+        glue = "Steps",tags = "@Func1")
 public class TestRunner extends AbstractTestNGCucumberTests {
 
 

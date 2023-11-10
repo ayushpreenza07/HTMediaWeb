@@ -60,7 +60,8 @@ public class Login extends LoginPageObject {
     }
 
     @Then("^I click on Premium$")
-    public void i_Click_on_Premium(){
+    public void i_Click_on_Premium() throws InterruptedException {
+        scrolltoTopOfPage();
         clickPremium();
     }
 

@@ -83,8 +83,8 @@ public class LoginPageObject extends BaseTest {
         driver.findElement(Login).click();
     }
 
-    public void clickPremium(){
-        WebDriverWait wait = new WebDriverWait(driver, 25);
+    public void clickPremium() {
+        WebDriverWait wait = new WebDriverWait(driver, 20);
         wait.until(ExpectedConditions.visibilityOfElementLocated(Premium));
         driver.findElement(Premium).click();
     }
@@ -316,5 +316,9 @@ public class LoginPageObject extends BaseTest {
         catch(Throwable e) {
             Assert.fail(e.getMessage());
         }
+    }
+    public void scrolltoTopOfPage() throws InterruptedException {
+        Thread.sleep(2000);
+        ((JavascriptExecutor) driver).executeScript("window.scrollTo(document.body.scrollHeight, 0)");
     }
 }

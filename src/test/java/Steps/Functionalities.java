@@ -67,4 +67,5 @@ public class Functionalities extends FunctionalitiesObject {
     public void click_on_show_back_button() {
         clickShowBackButton();
     }
+
 }
