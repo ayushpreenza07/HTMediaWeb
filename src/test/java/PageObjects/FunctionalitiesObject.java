@@ -133,7 +133,8 @@ public class FunctionalitiesObject extends BaseTest {
             Assert.fail("Audio Options are not present");
         }
     }
-    public void verifysubtitleOptions(){
+
+    public void verifysubtitleOptions() {
         try {
             driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
             WebDriverWait wait = new WebDriverWait(BaseTest.driver, 25);
@@ -143,7 +144,8 @@ public class FunctionalitiesObject extends BaseTest {
             Assert.fail("Subtitle Options are not present");
         }
     }
-    public void clickShowBackButton(){
+
+    public void clickShowBackButton() {
         try {
             driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
             boolean displayed = driver.findElement(backButton).isDisplayed();
@@ -152,5 +154,17 @@ public class FunctionalitiesObject extends BaseTest {
         } catch (Throwable e) {
             Assert.fail("Back button not displayed/working");
         }
+    }
+
+    public void selectShow(String asset) throws InterruptedException {
+        String xpath = "//h6[contains(text(),'" + asset + "')]";
+        System.out.println(xpath);
+        JavascriptExecutor jsx = (JavascriptExecutor) driver;
+        jsx.executeScript("window.scrollBy(0,450)", "");
+        Thread.sleep(5000);
+        WebDriverWait wait = new WebDriverWait(driver, 50);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath)));
+//        jsx.executeScript("arguments[0].click();", xpath);
+        driver.findElement(By.xpath(xpath)).click();
     }
 }

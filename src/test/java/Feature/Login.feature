@@ -5,7 +5,7 @@ Feature: OTTWeb
     Given I navigate to application
     When I click on Sign In button
     And I enter username and password
-      | username    | password |
+      | username   | password     |
       | 9100381062 | Password@123 |
     Then I click on Premium
     And Select "SonyLIV"

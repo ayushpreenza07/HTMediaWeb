@@ -1,6 +1,6 @@
 Feature: OTT Play Functionalities
 
-  @Func1
+  @Func
   Scenario: Verify Next Page
     Given I navigate to application
     When I click on Sign In button
@@ -9,13 +9,14 @@ Feature: OTT Play Functionalities
       | 9100381062 | Password@123 |
     Then I click on Premium
     And Select "SonyLIV"
-    Then select first show
+#    Then select first show
+    And Play the show "Charlie Chopra & The Mystery Of Solang Valley"
     And Play show
     And Get the title of show
     Then click on next episode
     Then verify user is on next page
 
-  @Func1
+  @Func
   Scenario: Verify OTT Play Brand logo
     Given I navigate to application
     When I click on Sign In button

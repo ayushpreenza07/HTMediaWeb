@@ -26,7 +26,7 @@ public class Login extends LoginPageObject {
             BaseTest.setUp();
             BaseTest.driver.get("https://www.ottplay.com/");
             BaseTest.driver.manage().window().maximize();
-        }catch (Throwable e){
+        } catch (Throwable e) {
 
         }
     }
@@ -35,7 +35,7 @@ public class Login extends LoginPageObject {
     public void iClickOnSignInButton() {
         try {
             ClickSignIn();
-        }catch (Throwable e) {
+        } catch (Throwable e) {
 
         }
     }
@@ -61,7 +61,7 @@ public class Login extends LoginPageObject {
 
     @Then("^I click on Premium$")
     public void i_Click_on_Premium() throws InterruptedException {
-        scrolltoTopOfPage();
+//        scrolltoTopOfPage();
         clickPremium();
     }
 
@@ -73,17 +73,17 @@ public class Login extends LoginPageObject {
     }
 
     @Then("^select first show$")
-    public void select_first_show(){
+    public void select_first_show() {
         clickFirstShow();
     }
 
     @Then("^Play show$")
-    public void play_show(){
+    public void play_show() {
         playShow();
     }
 
     @Then("^Pause episode$")
-    public void pause_episode(){
+    public void pause_episode() {
         pauseEpisode();
     }
 
@@ -91,10 +91,8 @@ public class Login extends LoginPageObject {
     public void verifyWhetherTheEpisodeIsPlayingOrNot() throws IOException, InterruptedException {
         try {
             Thread.sleep(2000);
-            Assert.assertTrue(testImageComparison(8000),"Episode is Playing");
-        }
-        catch(Throwable e)
-        {
+            Assert.assertTrue(testImageComparison(8000), "Episode is Playing");
+        } catch (Throwable e) {
             Assert.fail(e.getMessage());
         }
 

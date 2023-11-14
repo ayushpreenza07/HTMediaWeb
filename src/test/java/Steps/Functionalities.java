@@ -68,4 +68,10 @@ public class Functionalities extends FunctionalitiesObject {
         clickShowBackButton();
     }
 
+    @Then("^Play the show \"([^\"]*)\"")
+    public void Play_the_show(String show) throws InterruptedException {
+        System.out.println(show);
+        selectShow(show);
+        Thread.sleep(5000);
+    }
 }
