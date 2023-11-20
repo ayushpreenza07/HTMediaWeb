@@ -59,10 +59,10 @@ public class Login extends LoginPageObject {
         }
     }
 
-    @Then("^I click on Premium$")
-    public void i_Click_on_Premium() throws InterruptedException {
+    @Then("^I click on \"([^\"]*)\"")
+    public void i_Click_on_Platform(String platform) throws InterruptedException {
 //        scrolltoTopOfPage();
-        clickPremium();
+        clickPlatform(platform);
     }
 
     @Then("^Select \"([^\"]*)\"")

@@ -1,13 +1,13 @@
 Feature: OTT Play Functionalities
 
-  @Func
+  @Func11
   Scenario: Verify Next Page
     Given I navigate to application
     When I click on Sign In button
     And I enter username and password
       | username   | password     |
       | 9100381062 | Password@123 |
-    Then I click on Premium
+    Then I click on "Premium"
     And Select "SonyLIV"
 #    Then select first show
     And Play the show "Charlie Chopra & The Mystery Of Solang Valley"
