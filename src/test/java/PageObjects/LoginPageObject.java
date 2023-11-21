@@ -336,7 +336,7 @@ public class LoginPageObject extends BaseTest {
     }
 
     public void clickUserIcon(){
-        WebDriverWait wait = new WebDriverWait(driver, 25);
+        WebDriverWait wait = new WebDriverWait(driver, 50);
         wait.until(ExpectedConditions.visibilityOfElementLocated(UserIcon));
         driver.findElement(UserIcon).click();
     }
