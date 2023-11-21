@@ -1,7 +1,6 @@
 package PageObjects;
 
 import Utils.BaseTest;
-import com.aventstack.extentreports.Status;
 import org.junit.Assert;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
@@ -12,12 +11,11 @@ import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-import java.time.Duration;
 import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
-public class LoginPageObject extends BaseTest {
+public class ForwardRewindObject extends BaseTest {
 
     public By SignInButton=By.xpath("//div[@class='ottplay-83'][text()='Login/Register']");
     public By UserNameButton=By.xpath("//INPUT[@id='phoneEmail']");
@@ -39,6 +37,11 @@ public class LoginPageObject extends BaseTest {
 
     public By BackWard = By.xpath("//SPAN[@class='rewindBtn'][text()='10']");
     public By FullScreen = By.xpath("//SPAN[@class='controllBtns'][text()='Full Screen']");
+    public By UserIcon = By.xpath("//IMG[@src='https://images.ottplay.com/static/profile2.svg?format=webp']");
+
+    public By ParentalControl=By.xpath("//div/a[text()='Parental Control']");
+
+    public By OttRailList = By.xpath("//div[@class='slick-list']");
     static Actions action;
     static Actions action1;
     public void ClickSignIn()
@@ -324,9 +327,5 @@ public class LoginPageObject extends BaseTest {
         catch(Throwable e) {
             Assert.fail(e.getMessage());
         }
-    }
-    public void scrolltoTopOfPage() throws InterruptedException {
-        Thread.sleep(2000);
-        ((JavascriptExecutor) driver).executeScript("window.scrollTo(document.body.scrollHeight, 0)");
     }
 }
