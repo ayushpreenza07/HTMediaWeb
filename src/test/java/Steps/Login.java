@@ -117,4 +117,20 @@ public class Login extends LoginPageObject {
     public void backward_functionality() throws IOException, InterruptedException {
         verifyBackwardIsWorking();
     }
+
+    @Then("I click on User icon")
+    public void click_userIcon() throws IOException, InterruptedException {
+        Thread.sleep(15000);
+        clickUserIcon();
+    }
+
+    @Then("verify Parental control is present")
+    public void verify_parentalControl() throws IOException, InterruptedException {
+        verifyParentalControl();
+    }
+
+    @Then("verify Ott channels rail")
+    public void verifyOttRail(){
+        OttRail();
+    }
 }

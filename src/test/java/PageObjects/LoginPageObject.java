@@ -39,6 +39,11 @@ public class LoginPageObject extends BaseTest {
 
     public By BackWard = By.xpath("//SPAN[@class='rewindBtn'][text()='10']");
     public By FullScreen = By.xpath("//SPAN[@class='controllBtns'][text()='Full Screen']");
+    public By UserIcon = By.xpath("//IMG[@src='https://images.ottplay.com/static/profile2.svg?format=webp']");
+
+    public By ParentalControl=By.xpath("//div/a[text()='Parental Control']");
+
+    public By OttRailList = By.xpath("//div[@class='slick-list']");
     static Actions action;
     static Actions action1;
     public void ClickSignIn()
@@ -320,5 +325,43 @@ public class LoginPageObject extends BaseTest {
     public void scrolltoTopOfPage() throws InterruptedException {
         Thread.sleep(2000);
         ((JavascriptExecutor) driver).executeScript("window.scrollTo(document.body.scrollHeight, 0)");
+    }
+
+    public void clickUserIcon(){
+        WebDriverWait wait = new WebDriverWait(driver, 25);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(UserIcon));
+        driver.findElement(UserIcon).click();
+    }
+
+    public void verifyParentalControl(){
+        try{
+        WebDriverWait wait = new WebDriverWait(driver, 25);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(ParentalControl));
+        WebElement element = driver.findElement(ParentalControl);
+        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
+        Thread.sleep(5000);
+        }catch (Exception e){
+        System.out.println(e.getMessage());
+        Assert.fail("Parental control not present");
+        }
+    }
+
+    public void OttRail(){
+        boolean flag=false;
+        WebDriverWait wait = new WebDriverWait(driver, 25);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(OttRailList));
+
+        try {
+            for (int i = 0; i <= 5; i++) {
+                flag = driver.findElement(By.xpath("//div[@data-index='" + i + "']")).isDisplayed();
+                System.out.println(flag);
+            }
+        }catch(Exception e){
+            System.out.println(e.getMessage());
+            Assert.fail("channels are not present on rail");
+        }
+        if(!flag){
+            Assert.fail("Channels are missing from rail");
+        }
     }
 }
