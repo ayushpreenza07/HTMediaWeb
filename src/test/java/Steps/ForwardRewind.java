@@ -1,24 +1,18 @@
 package Steps;
 
-import PageObjects.LoginPageObject;
+import PageObjects.ForwardRewindObject;
 import Utils.BaseTest;
-import com.aventstack.extentreports.MediaEntityBuilder;
-import com.aventstack.extentreports.Status;
 import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
 import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
-public class Login extends LoginPageObject {
+public class ForwardRewind extends ForwardRewindObject {
 
     @Given("^I navigate to application$")
     public void iNavigateToApplication() {
@@ -116,21 +110,5 @@ public class Login extends LoginPageObject {
     @Then("verify backward functionality")
     public void backward_functionality() throws IOException, InterruptedException {
         verifyBackwardIsWorking();
-    }
-
-    @Then("I click on User icon")
-    public void click_userIcon() throws IOException, InterruptedException {
-        Thread.sleep(15000);
-        clickUserIcon();
-    }
-
-    @Then("verify Parental control is present")
-    public void verify_parentalControl() throws IOException, InterruptedException {
-        verifyParentalControl();
-    }
-
-    @Then("verify Ott channels rail")
-    public void verifyOttRail(){
-        OttRail();
     }
 }

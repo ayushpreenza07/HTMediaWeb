@@ -1,7 +1,6 @@
 package PageObjects;
 
 import Utils.BaseTest;
-import com.aventstack.extentreports.Status;
 import org.junit.Assert;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
@@ -12,12 +11,11 @@ import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-import java.time.Duration;
 import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
-public class LoginPageObject extends BaseTest {
+public class ForwardRewindObject extends BaseTest {
 
     public By SignInButton=By.xpath("//div[@class='ottplay-83'][text()='Login/Register']");
     public By UserNameButton=By.xpath("//INPUT[@id='phoneEmail']");
@@ -328,48 +326,6 @@ public class LoginPageObject extends BaseTest {
         }
         catch(Throwable e) {
             Assert.fail(e.getMessage());
-        }
-    }
-    public void scrolltoTopOfPage() throws InterruptedException {
-        Thread.sleep(2000);
-        ((JavascriptExecutor) driver).executeScript("window.scrollTo(document.body.scrollHeight, 0)");
-    }
-
-    public void clickUserIcon(){
-        WebDriverWait wait = new WebDriverWait(driver, 50);
-        wait.until(ExpectedConditions.visibilityOfElementLocated(UserIcon));
-        driver.findElement(UserIcon).click();
-    }
-
-    public void verifyParentalControl(){
-        try{
-        WebDriverWait wait = new WebDriverWait(driver, 25);
-        wait.until(ExpectedConditions.visibilityOfElementLocated(ParentalControl));
-        WebElement element = driver.findElement(ParentalControl);
-        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
-        Thread.sleep(5000);
-        }catch (Exception e){
-        System.out.println(e.getMessage());
-        Assert.fail("Parental control not present");
-        }
-    }
-
-    public void OttRail(){
-        boolean flag=false;
-        WebDriverWait wait = new WebDriverWait(driver, 25);
-        wait.until(ExpectedConditions.visibilityOfElementLocated(OttRailList));
-
-        try {
-            for (int i = 0; i <= 5; i++) {
-                flag = driver.findElement(By.xpath("//div[@data-index='" + i + "']")).isDisplayed();
-                System.out.println(flag);
-            }
-        }catch(Exception e){
-            System.out.println(e.getMessage());
-            Assert.fail("channels are not present on rail");
-        }
-        if(!flag){
-            Assert.fail("Channels are missing from rail");
         }
     }
 }
