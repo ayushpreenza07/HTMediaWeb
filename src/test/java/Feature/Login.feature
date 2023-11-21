@@ -7,7 +7,7 @@ Feature: OTTWeb
     And I enter username and password
       | username   | password     |
       | 9100381062 | Password@123 |
-    Then I click on Premium
+    Then I click on "Premium"
     And Select "SonyLIV"
     Then select first show
     And Play show
@@ -34,7 +34,7 @@ Feature: OTTWeb
       And I enter username and password
         | username   | password     |
         | 9100381062 | Password@123 |
-      Then I click on Premium
+      Then I click on "Premium"
       Then verify Ott channels rail
 
 

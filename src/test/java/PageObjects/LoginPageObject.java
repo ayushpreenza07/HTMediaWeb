@@ -88,10 +88,18 @@ public class LoginPageObject extends BaseTest {
         driver.findElement(Login).click();
     }
 
-    public void clickPremium() {
-        WebDriverWait wait = new WebDriverWait(driver, 20);
-        wait.until(ExpectedConditions.visibilityOfElementLocated(Premium));
-        driver.findElement(Premium).click();
+    public void clickPlatform(String asset) {
+//        WebDriverWait wait = new WebDriverWait(driver, 20);
+//        wait.until(ExpectedConditions.visibilityOfElementLocated(Premium));
+//        driver.findElement(Premium).click();
+
+        String xpath = "(//div[@class='ottplay-106']//span[contains(text(),'"+asset+"')])[1]";
+        System.out.println(xpath);
+        WebDriverWait wait = new WebDriverWait(driver, 50);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath)));
+//        jsx.executeScript("arguments[0].click();", xpath);
+        driver.findElement(By.xpath(xpath)).click();
+
     }
 
     public void selectChannel(String asset) throws InterruptedException {

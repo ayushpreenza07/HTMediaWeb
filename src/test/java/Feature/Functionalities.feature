@@ -7,7 +7,7 @@ Feature: OTT Play Functionalities
     And I enter username and password
       | username   | password     |
       | 9100381062 | Password@123 |
-    Then I click on Premium
+    Then I click on "Premium"
     And Select "SonyLIV"
 #    Then select first show
     And Play the show "Charlie Chopra & The Mystery Of Solang Valley"
@@ -23,7 +23,7 @@ Feature: OTT Play Functionalities
     And I enter username and password
       | username   | password     |
       | 9100381062 | Password@123 |
-    Then I click on Premium
+    Then I click on "Premium"
     And Select "SonyLIV"
     Then select first show
     And Play show
@@ -36,7 +36,7 @@ Feature: OTT Play Functionalities
     And I enter username and password
       | username   | password     |
       | 9100381062 | Password@123 |
-    Then I click on Premium
+    Then I click on "Premium"
     And Select "SonyLIV"
     Then select first show
     And Play show
@@ -50,7 +50,7 @@ Feature: OTT Play Functionalities
     And I enter username and password
       | username   | password     |
       | 9100381062 | Password@123 |
-    Then I click on Premium
+    Then I click on "Premium"
     And Select "SonyLIV"
     Then select first show
     And Play show
@@ -63,7 +63,7 @@ Feature: OTT Play Functionalities
     And I enter username and password
       | username   | password     |
       | 9100381062 | Password@123 |
-    Then I click on Premium
+    Then I click on "Premium"
     And Select "SonyLIV"
     Then select first show
     And Play show
@@ -77,7 +77,7 @@ Feature: OTT Play Functionalities
     And I enter username and password
       | username   | password     |
       | 9100381062 | Password@123 |
-    Then I click on Premium
+    Then I click on "Premium"
     And Select "SonyLIV"
     Then select first show
     And Play show
@@ -93,7 +93,7 @@ Feature: OTT Play Functionalities
     And I enter username and password
       | username   | password     |
       | 9100381062 | Password@123 |
-    Then I click on Premium
+    Then I click on "Premium"
     And Select "LIONSGATE PLAY"
     Then select first show
     And Play show
@@ -109,14 +109,14 @@ Feature: OTT Play Functionalities
     And I enter username and password
       | username   | password     |
       | 9100381062 | Password@123 |
-    Then I click on Premium
+    Then I click on "Premium"
     And Select "LIONSGATE PLAY"
     Then select first show
     And Play show
     Then verify whether the episode is playing or not
     Then Pause episode
     Then click on show back button
-    Then I click on Premium
+    Then I click on "Premium"
     And Select "SonyLIV"
     Then select first show
     And Play show
