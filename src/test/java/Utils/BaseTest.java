@@ -17,7 +17,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class BaseTest {
-    public static WebDriver driver;
+    public static ChromeDriver driver;
     public static void setUp() {
         ChromeOptions options=new ChromeOptions();
         Map<String, Object> prefs=new HashMap<String,Object>();

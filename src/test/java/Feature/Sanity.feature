@@ -29,3 +29,15 @@ Feature: Sanity Test cases
     Then select second show
     And Play show
     Then verify whether the episode is playing or not
+
+  @sanity1
+  Scenario: check facing issues play here link working in sony contents
+    Given I navigate to application
+    When I click on Sign In button
+    And I enter username and password
+      | username   | password     |
+      | 9100381062 | Password@123 |
+    Then I click on "Premium"
+    And Select "SonyLIV"
+    Then select first show
+    Then verify facing issues play here link
