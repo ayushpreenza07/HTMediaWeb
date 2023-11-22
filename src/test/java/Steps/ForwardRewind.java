@@ -111,4 +111,9 @@ public class ForwardRewind extends ForwardRewindObject {
     public void backward_functionality() throws IOException, InterruptedException {
         verifyBackwardIsWorking();
     }
+
+    @Then("^select second show$")
+    public void select_second_show() {
+        clickSecondShow();
+    }
 }

@@ -24,6 +24,7 @@ public class ForwardRewindObject extends BaseTest {
     public By Login = By.xpath("//INPUT[@id='btnLogin']");
     public By Premium = By.xpath("//span[@class='ottplay-108 false false']//img[@alt='Premium Logo']");
     public By firstShow = By.xpath("(//DIV[@class='subscriptionBanner_landscapeCard__grid__actionDetails__EIps_'])[1]");
+    public By secondShow = By.xpath("(//DIV[@class='subscriptionBanner_landscapeCard__grid__actionDetails__EIps_'])[2]");
     public By Resume = By.xpath("//SPAN[text()='Resume']");
 
     public By PlayShow = By.xpath("//SPAN[@class='movieDescription_playtext__U0wBf'][text()='Play']/self::SPAN");
@@ -113,7 +114,7 @@ public class ForwardRewindObject extends BaseTest {
     }
 
     public void clickFirstShow(){
-        WebDriverWait wait = new WebDriverWait(driver, 25);
+        WebDriverWait wait = new WebDriverWait(driver, 40);
         wait.until(ExpectedConditions.visibilityOfElementLocated(firstShow));
         driver.findElement(firstShow).click();
     }
@@ -327,5 +328,10 @@ public class ForwardRewindObject extends BaseTest {
         catch(Throwable e) {
             Assert.fail(e.getMessage());
         }
+    }
+    public void clickSecondShow(){
+        WebDriverWait wait = new WebDriverWait(driver, 40);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(secondShow));
+        driver.findElement(secondShow).click();
     }
 }

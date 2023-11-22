@@ -30,115 +30,119 @@ public class ProdObjects extends BaseTest {
 
 
     public void clickUserIcon() {
-        WebDriverWait wait = new WebDriverWait(driver, 50);
-        wait.until(ExpectedConditions.visibilityOfElementLocated(UserIcon));
-        driver.findElement(UserIcon).click();
+        try {
+            WebDriverWait wait = new WebDriverWait(driver, 50);
+            wait.until(ExpectedConditions.visibilityOfElementLocated(UserIcon));
+            driver.findElement(UserIcon).click();
+        } catch (Throwable e) {
+            Assert.fail("User Icon not clicked");
+        }
     }
 
-    public void verifyParentalControl() {
-        try {
+        public void verifyParentalControl () {
+            try {
+                WebDriverWait wait = new WebDriverWait(driver, 25);
+                wait.until(ExpectedConditions.visibilityOfElementLocated(ParentalControl));
+                WebElement element = driver.findElement(ParentalControl);
+                ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
+                Thread.sleep(5000);
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
+                Assert.fail("Parental control not present");
+            }
+        }
+
+        public void OttRail () {
+            boolean flag = false;
             WebDriverWait wait = new WebDriverWait(driver, 25);
-            wait.until(ExpectedConditions.visibilityOfElementLocated(ParentalControl));
-            WebElement element = driver.findElement(ParentalControl);
-            ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
-            Thread.sleep(5000);
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-            Assert.fail("Parental control not present");
-        }
-    }
+            wait.until(ExpectedConditions.visibilityOfElementLocated(OttRailList));
 
-    public void OttRail() {
-        boolean flag = false;
-        WebDriverWait wait = new WebDriverWait(driver, 25);
-        wait.until(ExpectedConditions.visibilityOfElementLocated(OttRailList));
-
-        try {
-            for (int i = 0; i <= 5; i++) {
-                flag = driver.findElement(By.xpath("//div[@data-index='" + i + "']")).isDisplayed();
-                System.out.println(flag);
+            try {
+                for (int i = 0; i <= 5; i++) {
+                    flag = driver.findElement(By.xpath("//div[@data-index='" + i + "']")).isDisplayed();
+                    System.out.println(flag);
+                }
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
+                Assert.fail("channels are not present on rail");
             }
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-            Assert.fail("channels are not present on rail");
+            if (!flag) {
+                Assert.fail("Channels are missing from rail");
+            }
         }
-        if (!flag) {
-            Assert.fail("Channels are missing from rail");
-        }
-    }
 
-    public void verifyLiveShows() {
-        try {
-            driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-            WebDriverWait wait = new WebDriverWait(BaseTest.driver, 25);
-            wait.until(ExpectedConditions.visibilityOfElementLocated(liveHindiNewsHeading));
-            driver.findElement(liveHindiNewsHeading).isDisplayed();
-            driver.findElement(liveSportsHeading).isDisplayed();
+        public void verifyLiveShows () {
+            try {
+                driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+                WebDriverWait wait = new WebDriverWait(BaseTest.driver, 25);
+                wait.until(ExpectedConditions.visibilityOfElementLocated(liveHindiNewsHeading));
+                driver.findElement(liveHindiNewsHeading).isDisplayed();
+                driver.findElement(liveSportsHeading).isDisplayed();
 //            driver.findElement(regionalNewsHeading).isDisplayed();
-        } catch (Throwable e) {
-            Assert.fail("Live Shows not displayed");
-        }
-    }
-
-    public void clickSearchAndEnter(String platform) {
-        try {
-            Thread.sleep(4000);
-            driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-            WebDriverWait wait = new WebDriverWait(BaseTest.driver, 25);
-            wait.until(ExpectedConditions.visibilityOfElementLocated(SearchBar));
-            driver.findElement(SearchBar).sendKeys(platform);
-            Actions action = new Actions(driver);
-            action.sendKeys(Keys.ENTER).build().perform();
-            Thread.sleep(5000);
-        } catch (Throwable e) {
-            Assert.fail("Search not working");
-        }
-    }
-
-    public void clickPlatform(String platform) {
-        try {
-            driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-            WebDriverWait wait = new WebDriverWait(BaseTest.driver, 25);
-            wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[contains(text(),'" + platform + "')]")));
-            boolean displayed = driver.findElement(By.xpath("//span[contains(text(),'" + platform + "')]")).isDisplayed();
-            if (displayed) {
-
-                driver.findElement(By.xpath("//span[contains(text(),'" + platform + "')]")).click();
+            } catch (Throwable e) {
+                Assert.fail("Live Shows not displayed");
             }
-        } catch (Throwable e) {
-            Assert.fail("Platform not clicked");
         }
-    }
 
-    public void verifyTamilAndTeluguShows() {
-        try {
-            driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-            driver.findElement(TamilShow).isDisplayed();
-        } catch (Throwable e) {
-            Assert.fail("Telugu and Tamil shows not verified");
-        }
-    }
-
-    public void clickProfileIcon() {
-        try {
-            driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-            WebDriverWait wait = new WebDriverWait(BaseTest.driver, 25);
-            wait.until(ExpectedConditions.visibilityOfElementLocated(profileIcon));
-            boolean displayed = driver.findElement(profileIcon).isDisplayed();
-            if (displayed) {
-                driver.findElement(profileIcon).click();
+        public void clickSearchAndEnter (String platform){
+            try {
+                Thread.sleep(4000);
+                driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+                WebDriverWait wait = new WebDriverWait(BaseTest.driver, 25);
+                wait.until(ExpectedConditions.visibilityOfElementLocated(SearchBar));
+                driver.findElement(SearchBar).sendKeys(platform);
+                Actions action = new Actions(driver);
+                action.sendKeys(Keys.ENTER).build().perform();
+                Thread.sleep(5000);
+            } catch (Throwable e) {
+                Assert.fail("Search not working");
             }
-        } catch (Throwable e) {
-            Assert.fail("Profile Icon not displayed");
         }
-    }
 
-    public void verifySettings() {
-        try {
-            driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-            driver.findElement(settingOptions).isDisplayed();
-        } catch (Throwable e) {
-            Assert.fail("Setting options not available");
+        public void clickPlatform (String platform){
+            try {
+                driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+                WebDriverWait wait = new WebDriverWait(BaseTest.driver, 25);
+                wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[contains(text(),'" + platform + "')]")));
+                boolean displayed = driver.findElement(By.xpath("//span[contains(text(),'" + platform + "')]")).isDisplayed();
+                if (displayed) {
+
+                    driver.findElement(By.xpath("//span[contains(text(),'" + platform + "')]")).click();
+                }
+            } catch (Throwable e) {
+                Assert.fail("Platform not clicked");
+            }
+        }
+
+        public void verifyTamilAndTeluguShows () {
+            try {
+                driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+                driver.findElement(TamilShow).isDisplayed();
+            } catch (Throwable e) {
+                Assert.fail("Telugu and Tamil shows not verified");
+            }
+        }
+
+        public void clickProfileIcon () {
+            try {
+                driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+                WebDriverWait wait = new WebDriverWait(BaseTest.driver, 25);
+                wait.until(ExpectedConditions.visibilityOfElementLocated(profileIcon));
+                boolean displayed = driver.findElement(profileIcon).isDisplayed();
+                if (displayed) {
+                    driver.findElement(profileIcon).click();
+                }
+            } catch (Throwable e) {
+                Assert.fail("Profile Icon not displayed");
+            }
+        }
+
+        public void verifySettings () {
+            try {
+                driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+                driver.findElement(settingOptions).isDisplayed();
+            } catch (Throwable e) {
+                Assert.fail("Setting options not available");
+            }
         }
     }
-}
