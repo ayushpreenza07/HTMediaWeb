@@ -24,4 +24,19 @@ public class SanitySteps extends SanityPageObject {
         Thread.sleep(10000);
         facingIssuesLink();
     }
+
+    @Then("^Search content \"([^\"]*)\"")
+    public void click_on_search(String content) throws IOException, InterruptedException {
+        searchContent(content);
+    }
+
+    @Then("click on see all result")
+    public void click_on_seeAll() throws IOException, InterruptedException {
+        clickSeeAllResult();
+    }
+
+    @Then("click on movies,shows,stories,live tv etc")
+    public void click_on_moviesShowsEtc() throws IOException, InterruptedException {
+        clickMoviesShows();
+    }
 }
