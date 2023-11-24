@@ -27,11 +27,7 @@ public class ForwardRewind extends ForwardRewindObject {
 
     @And("^I click on Sign In button$")
     public void iClickOnSignInButton() {
-        try {
             ClickSignIn();
-        } catch (Throwable e) {
-
-        }
     }
 
     @And("^I enter username and password$")

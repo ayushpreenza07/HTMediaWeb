@@ -17,12 +17,11 @@ import java.util.concurrent.TimeUnit;
 
 public class ForwardRewindObject extends BaseTest {
 
-    public By SignInButton=By.xpath("//div[@class='ottplay-83'][text()='Login/Register']");
+    public By SignInButton=By.xpath("//div[@class='ottplay-84'][text()='Login/Register']");
     public By UserNameButton=By.xpath("//INPUT[@id='phoneEmail']");
     public By Continue = By.xpath("//INPUT[@id='btSubmit']");
     public By PasswordButton=By.xpath("//INPUT[@id='upass']");
     public By Login = By.xpath("//INPUT[@id='btnLogin']");
-    public By Premium = By.xpath("//span[@class='ottplay-108 false false']//img[@alt='Premium Logo']");
     public By firstShow = By.xpath("(//DIV[@class='subscriptionBanner_landscapeCard__grid__actionDetails__EIps_'])[1]");
     public By secondShow = By.xpath("(//DIV[@class='subscriptionBanner_landscapeCard__grid__actionDetails__EIps_'])[2]");
     public By Resume = By.xpath("//SPAN[text()='Resume']");
@@ -50,7 +49,7 @@ public class ForwardRewindObject extends BaseTest {
         try {
             refreshPage();
             driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-            WebDriverWait wait = new WebDriverWait(BaseTest.driver, 25);
+            WebDriverWait wait = new WebDriverWait(driver, 25);
             wait.until(ExpectedConditions.visibilityOfElementLocated(SignInButton));
             boolean displayed = driver.findElement(SignInButton).isDisplayed();
             if(displayed)
@@ -92,7 +91,7 @@ public class ForwardRewindObject extends BaseTest {
 //        wait.until(ExpectedConditions.visibilityOfElementLocated(Premium));
 //        driver.findElement(Premium).click();
 
-        String xpath = "(//div[@class='ottplay-106']//span[contains(text(),'"+asset+"')])[1]";
+        String xpath = "(//div[@class='ottplay-107']//span[contains(text(),'"+asset+"')])[1]";
         System.out.println(xpath);
         WebDriverWait wait = new WebDriverWait(driver, 50);
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath)));

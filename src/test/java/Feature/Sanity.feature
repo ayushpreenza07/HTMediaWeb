@@ -72,3 +72,19 @@ Feature: Sanity Test cases
     Then select second show
     And Play show
     Then verify whether the episode is playing or not
+
+  @sanity1
+  Scenario: check all pages are opening
+    Given I navigate to application
+    When I click on Sign In button
+    And I enter username and password
+      | username   | password     |
+      | 9100381062 | Password@123 |
+    Then I click on "Live TV"
+    Then I click on "Premium"
+    Then I click on "Streaming Now"
+    Then I click on "News"
+    Then I click on "Reviews"
+    Then I click on "Web Stories"
+    Then I click on "Photos"
+    Then I click on "More"

@@ -10,7 +10,7 @@ Feature: Prod Test cases
     And I click on User icon
     Then verify Parental control is present
 
-  @prod
+  @prod1
   Scenario: verify Ott Subscribed channel rail
     Given I navigate to application
     When I click on Sign In button

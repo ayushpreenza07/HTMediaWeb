@@ -23,9 +23,9 @@ public class ProdObjects extends BaseTest {
     public By liveSportsHeading = By.xpath("//h3[contains(text(),'Live Sports')]");
     public By regionalNewsHeading = By.xpath("//h3[contains(text(),'Regional News')]");
 
-    public By SearchBar = By.xpath("(//input[@class='ottplay-47'])[1]");
+    public By SearchBar = By.xpath("(//input[@id='searchFeild'])[1]");
     public By TamilShow = By.xpath("//div[contains(text(),'Zee Tamil HD')]");
-    public By profileIcon = By.xpath("(//div[@class='ottplay-83'])[1]");
+    public By profileIcon = By.xpath("(//div[@class='ottplay-84'])[1]");
     public By settingOptions = By.xpath("//div[contains(text(),'Settings')]");
 
 
