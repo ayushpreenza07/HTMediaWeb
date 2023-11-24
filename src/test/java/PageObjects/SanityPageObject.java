@@ -7,13 +7,18 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
 import java.util.*;
+import java.util.concurrent.TimeUnit;
 
 public class SanityPageObject extends BaseTest {
     public By logoutBtn = By.xpath("//span[contains(text(),'Logout')]");
     public By FacingIssuePlayHere = By.xpath("//A[@class='movieDescription_issuePlayHere__RMs5a'][text()='Play Here']");
     public By searchBar = By.xpath("//INPUT[@id='searchFeild']");
     public By seeAllResult = By.xpath("//SPAN[@class='searchDropdown_seeAllTitle__niBOx']");
+    public By storiesPageFilters = By.xpath("//span[@class='MuiButton-label'][contains(text(),'All Type')]");
+    public By filterOptions = By.xpath("//span[@class='MuiButton-label'][contains(text(),'All Languages')]");
+
     public void clickLogoutBtn() {
         try {
             WebDriverWait wait = new WebDriverWait(driver, 50);
@@ -38,6 +43,7 @@ public class SanityPageObject extends BaseTest {
             Assert.fail("Vendor not selected");
         }
     }
+
     public void facingIssuesLink() throws InterruptedException {
         String parent = driver.getWindowHandle();
         System.out.println(parent);
@@ -65,7 +71,7 @@ public class SanityPageObject extends BaseTest {
         driver.switchTo().window(parent);
     }
 
-    public void searchContent(String search){
+    public void searchContent(String search) {
         WebDriverWait wait = new WebDriverWait(driver, 50);
         wait.until(ExpectedConditions.visibilityOfElementLocated(searchBar));
 
@@ -80,18 +86,36 @@ public class SanityPageObject extends BaseTest {
     }
 
     public void clickMoviesShows() throws InterruptedException {
-        String[] arr = { "Movie", "Show", "Live TV", "Sport", "Cast & Crew", "Stories" };
+        String[] arr = {"Movie", "Show", "Live TV", "Sport", "Cast & Crew", "Stories"};
 
         String buttons = "//SPAN[@class='MuiButton-label']";
         List<WebElement> rows = driver.findElements(By.xpath(buttons));
         System.out.println(rows.size());
-        for(WebElement row : rows) {
-            for(int i=0;i<=arr.length-1;i++){
-                if(row.getText().equals(arr[i])){
+        for (WebElement row : rows) {
+            for (int i = 0; i <= arr.length - 1; i++) {
+                if (row.getText().equals(arr[i])) {
                     row.click();
                     Thread.sleep(2000);
                 }
             }
+        }
+    }
+
+    public void verifyFilters() {
+        try {
+            driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+            driver.findElement(filterOptions).isDisplayed();
+        } catch (Throwable e) {
+            Assert.fail("Filters not displayed");
+        }
+    }
+
+    public void verifyFilterOnStoriesPage() {
+        try {
+            driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+            driver.findElement(storiesPageFilters).isDisplayed();
+        } catch (Throwable e) {
+            Assert.fail("Filters not displayed");
         }
     }
 }

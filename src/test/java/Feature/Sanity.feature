@@ -88,3 +88,32 @@ Feature: Sanity Test cases
     Then I click on "Web Stories"
     Then I click on "Photos"
     Then I click on "More"
+
+  @Sanity
+  Scenario: Verify filters on searched page
+    Given I navigate to application
+    When I click on Sign In button
+    And I enter username and password
+      | username   | password     |
+      | 9100381062 | Password@123 |
+    And Search content "Jhalak dikhla jaa"
+    Then click on see all result
+    Then click on searchPage "Movie"
+    And verify filters present
+    Then click on searchPage "Show"
+    And verify filters present
+    Then click on searchPage "Stories"
+    And verify filters present on stories page
+
+  @Sanity
+  Scenario: Verify filters on my profile
+
+  @Sanity
+  Scenario: Verify filters for unsubscribed user
+    Given I navigate to application
+
+  @Sanity
+  Scenario: Verify filters on movie listing page
+
+  @Sanity
+  Scenario: Verify filters on shows listing page

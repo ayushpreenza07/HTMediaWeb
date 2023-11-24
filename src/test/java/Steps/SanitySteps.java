@@ -39,4 +39,14 @@ public class SanitySteps extends SanityPageObject {
     public void click_on_moviesShowsEtc() throws IOException, InterruptedException {
         clickMoviesShows();
     }
+
+    @Then("verify filters present")
+    public void verify_filters_present() {
+        verifyFilters();
+    }
+
+    @Then("verify filters present on stories page")
+    public void verify_filters_present_on_stories_page() {
+        verifyFilterOnStoriesPage();
+    }
 }
