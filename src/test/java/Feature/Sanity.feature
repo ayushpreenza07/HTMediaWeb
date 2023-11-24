@@ -117,3 +117,22 @@ Feature: Sanity Test cases
 
   @Sanity
   Scenario: Verify filters on shows listing page
+
+
+  @sanity
+  Scenario: check all pages are opening
+    Given I navigate to application
+    When I click on Sign In button
+    And I enter username and password
+      | username   | password     |
+      | 9100381062 | Password@123 |
+    Then I click on "Live TV"
+    And scroll to bottom of page
+    Then I click on "Premium"
+    And scroll to bottom of page
+    Then I click on "Reviews"
+    And scroll to bottom of page
+    Then I click on "Web Stories"
+    And scroll to bottom of page
+    Then I click on "Photos"
+    And scroll to bottom of page

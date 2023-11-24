@@ -118,5 +118,12 @@ public class SanityPageObject extends BaseTest {
             Assert.fail("Filters not displayed");
         }
     }
+
+    public void scrollBottom() throws InterruptedException {
+        Thread.sleep(2000);
+        JavascriptExecutor js = ((JavascriptExecutor) driver);
+        js.executeScript("window.scrollTo(0, document.body.scrollHeight)");
+        Thread.sleep(2000);
+    }
 }
 

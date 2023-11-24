@@ -49,4 +49,9 @@ public class SanitySteps extends SanityPageObject {
     public void verify_filters_present_on_stories_page() {
         verifyFilterOnStoriesPage();
     }
+
+    @Then("scroll to bottom of page")
+    public void scroll_bottom() throws IOException, InterruptedException {
+        scrollBottom();
+    }
 }
