@@ -18,6 +18,28 @@ public class SanityPageObject extends BaseTest {
     public By seeAllResult = By.xpath("//SPAN[@class='searchDropdown_seeAllTitle__niBOx']");
     public By storiesPageFilters = By.xpath("//span[@class='MuiButton-label'][contains(text(),'All Type')]");
     public By filterOptions = By.xpath("//span[@class='MuiButton-label'][contains(text(),'All Languages')]");
+    public By settingBtn = By.xpath("(//img[@alt='settings icon'])[1]");
+    public By MyLanguagesFilter = By.xpath("//span[contains(text(),'My Languages')]");
+    public By MyProvidersFilter = By.xpath("//span[contains(text(),'My Providers')]");
+    public By MyGenresFilter = By.xpath("//span[contains(text(),'My Genres')]");
+    public By MyActorsFilter = By.xpath("//span[contains(text(),'My Actors')]");
+    public By MyFilmmakersFilter = By.xpath("//span[contains(text(),'My Filmmakers')]");
+    public By listingPageLanguageFilter = By.xpath("//p[contains(text(),'Languages')]");
+    public By listingPageGenresFilter = By.xpath("//p[contains(text(),'Genres')]");
+    public By listingPageProvidersFilter = By.xpath("//p[contains(text(),'Providers')]");
+    public By listingPageFreePaidFilter = By.xpath("//p[contains(text(),'Free')]");
+    public By listingPageRuntimeMinutesFilter = By.xpath("//p[contains(text(),'Runtime')]");
+    public By listingPageQualityFilter = By.xpath("//p[contains(text(),'Quality')]");
+    public By listingPageContentRatingFilter = By.xpath("//p[contains(text(),'Content')]");
+    public By profileMyLanguagesFilter = By.xpath("//span[contains(text(),'My Languages')]");
+    public By profileMyProvidersFilter = By.xpath("//span[contains(text(),'My Providers')]");
+    public By profileMyGenresFilter = By.xpath("//span[contains(text(),'My Genres')]");
+    public By profileMyActorsFilter = By.xpath("//span[contains(text(),'My Actors')]");
+    public By profileMyFilmmakersFilter = By.xpath("//span[contains(text(),'My Filmmakers')]");
+    public By SignInButton = By.xpath("//div[@class='ottplay-84'][text()='Login/Register']");
+    public By movieReleasesBtn = By.xpath("(//a[contains(text(),'Movie Releases')])[1]");
+    public By languageBtn = By.xpath("//span[contains(text(),'Languages')]");
+    public By hindiLanguageBtn = By.xpath("//h5[contains(text(),'Hindi')]");
 
     public void clickLogoutBtn() {
         try {
@@ -124,6 +146,160 @@ public class SanityPageObject extends BaseTest {
         JavascriptExecutor js = ((JavascriptExecutor) driver);
         js.executeScript("window.scrollTo(0, document.body.scrollHeight)");
         Thread.sleep(2000);
+    }
+
+    public void clickSettingsBtn() {
+        try {
+            refreshPage();
+            driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+            WebDriverWait wait = new WebDriverWait(driver, 25);
+            wait.until(ExpectedConditions.visibilityOfElementLocated(SignInButton));
+            WebDriverWait wait2 = new WebDriverWait(driver, 50);
+            wait2.until(ExpectedConditions.visibilityOfElementLocated(settingBtn));
+            driver.findElement(settingBtn).click();
+        } catch (Throwable e) {
+            Assert.fail("Setting button not clicked");
+        }
+    }
+
+    private void refreshPage() {
+        try {
+            driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+            boolean displayed = driver.findElement(SignInButton).isDisplayed();
+            if (!displayed)
+                driver.navigate().refresh();
+        } catch (Exception e) {
+
+        }
+    }
+
+    public void myLanguagesFilter() {
+        try {
+            WebDriverWait wait = new WebDriverWait(driver, 20);
+            wait.until(ExpectedConditions.visibilityOfElementLocated(MyLanguagesFilter));
+            driver.findElement(MyLanguagesFilter).click();
+        } catch (Throwable e) {
+            Assert.fail("My Languages Filter not clicked");
+        }
+    }
+
+    public void myProvidersFilter() {
+        try {
+            WebDriverWait wait = new WebDriverWait(driver, 20);
+            wait.until(ExpectedConditions.visibilityOfElementLocated(MyProvidersFilter));
+            driver.findElement(MyProvidersFilter).click();
+        } catch (Throwable e) {
+            Assert.fail("My Providers Filter not clicked");
+        }
+    }
+
+    public void myGenresFilter() {
+        try {
+            WebDriverWait wait = new WebDriverWait(driver, 20);
+            wait.until(ExpectedConditions.visibilityOfElementLocated(MyGenresFilter));
+            driver.findElement(MyGenresFilter).click();
+        } catch (Throwable e) {
+            Assert.fail("My Genres Filter not clicked");
+        }
+    }
+
+    public void myActorsFilter() {
+        try {
+            WebDriverWait wait = new WebDriverWait(driver, 20);
+            wait.until(ExpectedConditions.visibilityOfElementLocated(MyActorsFilter));
+            driver.findElement(MyActorsFilter).click();
+        } catch (Throwable e) {
+            Assert.fail("My Actors Filter not clicked");
+        }
+    }
+
+    public void myFilmmakersFilter() {
+        try {
+            WebDriverWait wait = new WebDriverWait(driver, 20);
+            wait.until(ExpectedConditions.visibilityOfElementLocated(MyFilmmakersFilter));
+            driver.findElement(MyFilmmakersFilter).click();
+        } catch (Throwable e) {
+            Assert.fail("Filmmakers Filter not clicked");
+        }
+    }
+
+    public void selectListing(String asset) throws InterruptedException {
+        try {
+            String xpath = "(//ul[@id='menu-list-grow']//a[contains(text(),'" + asset + "')])[1]";
+            System.out.println(xpath);
+            WebElement element = driver.findElement(By.xpath(xpath));
+            ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
+            Thread.sleep(5000);
+            WebDriverWait wait = new WebDriverWait(driver, 50);
+            wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath)));
+            driver.findElement(By.xpath(xpath)).click();
+        } catch (Throwable e) {
+            Assert.fail("Listing not selected");
+        }
+    }
+
+    public void verifyListingPageFilters() {
+        try {
+            driver.findElement(listingPageLanguageFilter).click();
+            Thread.sleep(2000);
+            driver.findElement(listingPageContentRatingFilter).click();
+            Thread.sleep(2000);
+            driver.findElement(listingPageQualityFilter).click();
+            Thread.sleep(2000);
+            driver.findElement(listingPageRuntimeMinutesFilter).click();
+            Thread.sleep(2000);
+            driver.findElement(listingPageFreePaidFilter).click();
+            Thread.sleep(2000);
+            driver.findElement(listingPageProvidersFilter).click();
+            Thread.sleep(2000);
+            driver.findElement(listingPageGenresFilter).click();
+        } catch (Throwable e) {
+            Assert.fail("ListingPage filters are not veified");
+        }
+    }
+
+    public void verifyProfileFilters() {
+        try {
+            driver.findElement(profileMyLanguagesFilter).isDisplayed();
+            driver.findElement(profileMyActorsFilter).isDisplayed();
+            driver.findElement(profileMyGenresFilter).isDisplayed();
+            driver.findElement(profileMyProvidersFilter).isDisplayed();
+            driver.findElement(profileMyFilmmakersFilter).isDisplayed();
+        } catch (Throwable e) {
+            Assert.fail("Profile filters not verified");
+        }
+    }
+
+    public void clickMovieReleases() {
+        try {
+            WebDriverWait wait = new WebDriverWait(driver, 20);
+            wait.until(ExpectedConditions.visibilityOfElementLocated(movieReleasesBtn));
+            driver.findElement(movieReleasesBtn).click();
+        } catch (Throwable e) {
+            Assert.fail("Movie releases not clicked");
+        }
+    }
+
+    public void changeLanguageFilterToHindi() throws InterruptedException {
+        WebElement element = driver.findElement(languageBtn);
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("arguments[0].scrollIntoView();", element);
+        WebDriverWait wait = new WebDriverWait(driver, 20);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(languageBtn));
+        driver.findElement(languageBtn).click();
+        Thread.sleep(3000);
+        driver.findElement(hindiLanguageBtn).click();
+        Thread.sleep(3000);
+        driver.findElement(By.xpath("//span[contains(text(),'Apply Filter')]")).click();
+    }
+
+    public void verifyHindiFilter() {
+        try {
+            driver.findElement(By.xpath("//li[contains(text(),'Hindi')]")).isDisplayed();
+        } catch (Throwable e) {
+            Assert.fail("filter not applied");
+        }
+
     }
 }
 

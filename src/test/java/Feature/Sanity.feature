@@ -107,17 +107,53 @@ Feature: Sanity Test cases
 
   @Sanity
   Scenario: Verify filters on my profile
+    Given I navigate to application
+    When I click on Sign In button
+    And I enter username and password
+      | username   | password     |
+      | 9100381062 | Password@123 |
+    And I click on User icon
+    And verify filters on profile
 
   @Sanity
   Scenario: Verify filters for unsubscribed user
     Given I navigate to application
+    And click on settings button
+    And click and verify setting filters for unsubscribed user
 
   @Sanity
   Scenario: Verify filters on movie listing page
+    Given I navigate to application
+    When I click on Sign In button
+    And I enter username and password
+      | username   | password     |
+      | 9100381062 | Password@123 |
+    Then I click on "More"
+    Then click on "Movies" listing
+    Then verify filters on listing page
 
   @Sanity
   Scenario: Verify filters on shows listing page
+    Given I navigate to application
+    When I click on Sign In button
+    And I enter username and password
+      | username   | password     |
+      | 9100381062 | Password@123 |
+    Then I click on "More"
+    Then click on "Shows" listing
+    Then verify filters on listing page
 
+  @Sanity
+  Scenario: Verify filters for Streaming now page
+    Given I navigate to application
+    When I click on Sign In button
+    And I enter username and password
+      | username   | password     |
+      | 9100381062 | Password@123 |
+    Then I click on "Streaming Now"
+    Then click on Movie releases
+    Then change the language filter to hindi
+    And verify filter applied for hindi language
 
   @sanity
   Scenario: check all pages are opening

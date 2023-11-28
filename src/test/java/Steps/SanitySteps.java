@@ -54,4 +54,54 @@ public class SanitySteps extends SanityPageObject {
     public void scroll_bottom() throws IOException, InterruptedException {
         scrollBottom();
     }
+
+    @And("click on settings button")
+    public void click_on_settings_button() throws InterruptedException {
+        Thread.sleep(20000);
+        clickSettingsBtn();
+    }
+
+    @And("click and verify setting filters for unsubscribed user")
+    public void click_and_verify_setting_filters_for_unsubscribed_user() throws InterruptedException {
+        myFilmmakersFilter();
+        Thread.sleep(2000);
+        myActorsFilter();
+        Thread.sleep(2000);
+        myGenresFilter();
+        Thread.sleep(2000);
+        myProvidersFilter();
+        Thread.sleep(2000);
+        myLanguagesFilter();
+    }
+
+    @And("^click on \"([^\"]*)\" listing")
+    public void click_on_listing(String platform) throws InterruptedException {
+        System.out.println(platform);
+        selectListing(platform);
+    }
+
+    @And("verify filters on listing page")
+    public void verify_filters_on_listing_page() {
+        verifyListingPageFilters();
+    }
+
+    @And("verify filters on profile")
+    public void verify_filters_on_profile() {
+        verifyProfileFilters();
+    }
+
+    @And("click on Movie releases")
+    public void click_on_Movie_releases() {
+        clickMovieReleases();
+    }
+
+    @And("change the language filter to hindi")
+    public void change_the_language_filter_to_hindi() throws InterruptedException {
+        changeLanguageFilterToHindi();
+    }
+
+    @And("verify filter applied for hindi language")
+    public void verify_filter_applied_for_hindi_language() {
+        verifyHindiFilter();
+    }
 }
