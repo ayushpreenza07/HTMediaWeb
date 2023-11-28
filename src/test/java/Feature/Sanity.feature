@@ -164,11 +164,9 @@ Feature: Sanity Test cases
       | 9100381062 | Password@123 |
     Then I click on "Live TV"
     And scroll to bottom of page
-    Then I click on "Premium"
+    And verify user on bottom of page
+    Then click go to top button
+    Then select first show
     And scroll to bottom of page
-    Then I click on "Reviews"
-    And scroll to bottom of page
-    Then I click on "Web Stories"
-    And scroll to bottom of page
-    Then I click on "Photos"
-    And scroll to bottom of page
+    And verify user on bottom of page
+    Then click go to top button

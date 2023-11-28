@@ -104,4 +104,14 @@ public class SanitySteps extends SanityPageObject {
     public void verify_filter_applied_for_hindi_language() {
         verifyHindiFilter();
     }
+
+    @And("click go to top button")
+    public void click_go_to_top_button() {
+        clickGoToTop();
+    }
+
+    @And("verify user on bottom of page")
+    public void verify_user_on_bottom_of_page() {
+        verifyBottomOfPage();
+    }
 }

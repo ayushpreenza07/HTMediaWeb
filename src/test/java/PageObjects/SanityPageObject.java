@@ -301,5 +301,21 @@ public class SanityPageObject extends BaseTest {
         }
 
     }
+
+    public void clickGoToTop() {
+        try {
+            driver.findElement(By.xpath("//button[@title='Go To Top']//span")).click();
+        } catch (Throwable e) {
+            Assert.fail("Button not clicked");
+        }
+    }
+
+    public void verifyBottomOfPage() {
+        try {
+            driver.findElement(By.xpath("//span[contains(text(),'Google Play')]")).isDisplayed();
+        } catch (Throwable e) {
+            Assert.fail("Button not clicked");
+        }
+    }
 }
 
