@@ -38,9 +38,11 @@ public class ForwardRewind extends ForwardRewindObject {
             List<Map<String, String>> data = dataTable.asMaps(String.class, String.class);
 
             System.out.println(data.get(0).get("username"));
+            System.out.println(data.get(0).get("password"));
 
             enterUserName(data.get(0).get("username"));
             clickContinue();
+            Thread.sleep(2000);
             enterPassword(data.get(0).get("password"));
             clickLogin();
             Thread.sleep(4000);

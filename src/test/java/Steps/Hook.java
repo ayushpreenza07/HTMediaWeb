@@ -23,13 +23,18 @@ public class Hook {
     @After
     public void TearDownTest(Scenario scenario) throws IOException {
         String path = null;
+
         if (scenario.isFailed()) {
+            System.out.println(scenario.getName());
             String scFileName = "ScreenShot_" + System.currentTimeMillis();
             path = System.getProperty("user.dir") + "\\report\\" + scFileName + ".png";
             byte[] screenshot = baseTest.TakeScreenShot(path);
             scenario.attach(screenshot, "image/png", "image");
+            driver.close();
+            driver.quit();
+        }else{
+            driver.close();
+            driver.quit();
         }
-        driver.close();
-        driver.quit();
     }
 }

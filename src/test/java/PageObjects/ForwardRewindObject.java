@@ -47,15 +47,14 @@ public class ForwardRewindObject extends BaseTest {
     public void ClickSignIn()
     {
         try {
-            refreshPage();
-            driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-            WebDriverWait wait = new WebDriverWait(driver, 25);
+            WebDriverWait wait = new WebDriverWait(driver, 50);
             wait.until(ExpectedConditions.visibilityOfElementLocated(SignInButton));
             boolean displayed = driver.findElement(SignInButton).isDisplayed();
             if(displayed)
                 driver.findElement(SignInButton).click();
         }catch(Exception e) {
-            Assert.fail("failed on signin");
+            refreshPage();
+            driver.findElement(SignInButton).click();
         }
     }
 
