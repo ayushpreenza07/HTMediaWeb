@@ -89,3 +89,13 @@ Feature: Regression test cases
         Then click live show
         And Play show
         Then verify whether the episode is playing or not
+
+  Scenario: Check login with all social media redirection is working
+    Given I navigate to application
+    When I click on Sign In button
+    Then click sign in with "Google"
+    And verify redirected to "Google"
+    Then click sign in with "Apple"
+    And verify redirected to "Apple"
+    Then click sign in with "Facebook"
+    Then verify redirected to "Facebook"

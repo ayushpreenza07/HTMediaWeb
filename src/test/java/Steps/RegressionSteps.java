@@ -24,4 +24,14 @@ public class RegressionSteps extends RegressionObjects {
     public void verify_no_duplicate_widgets(){
         noDuplicateWidgets();
     }
+
+    @Then("^click sign in with \"([^\"]*)\"")
+    public void sign_in_with_various_sites(String text){
+        signInApple(text);
+    }
+
+    @Then("^verify redirected to \"([^\"]*)\"")
+    public void verify_redirection(String platform) throws InterruptedException {
+        redirection(platform);
+    }
 }
