@@ -63,3 +63,29 @@ Feature: Regression test cases
     And I click on "Premium"
     Then scroll to bottom of page
     And verify no duplicate widgets
+
+    @Reg
+    Scenario: play a  movie
+      Given I navigate to application
+      When I click on Sign In button
+      And I enter username and password
+        | username   | password     |
+        | 9100381062 | Password@123 |
+      And I click on User icon
+      Then click on "hallmarkmoviesnow" vendor
+      Then select first show
+      And Play show
+      Then verify whether the episode is playing or not
+
+      @Reg
+      Scenario: Play live show on fancode provider
+        Given I navigate to application
+        When I click on Sign In button
+        And I enter username and password
+          | username   | password     |
+          | 9100381062 | Password@123 |
+        And I click on User icon
+        Then click on "fan" vendor
+        Then click live show
+        And Play show
+        Then verify whether the episode is playing or not

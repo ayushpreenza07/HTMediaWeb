@@ -27,7 +27,7 @@ public class ForwardRewind extends ForwardRewindObject {
 
     @And("^I click on Sign In button$")
     public void iClickOnSignInButton() {
-            ClickSignIn();
+        ClickSignIn();
     }
 
     @And("^I enter username and password$")
@@ -113,5 +113,10 @@ public class ForwardRewind extends ForwardRewindObject {
     @Then("^select second show$")
     public void select_second_show() {
         clickSecondShow();
+    }
+
+    @Then("click live show")
+    public void play_live_show() {
+        clickLiveShow();
     }
 }
