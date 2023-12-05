@@ -134,4 +134,8 @@ public class SanitySteps extends SanityPageObject {
     public void click_content_from_carouselPremium() throws InterruptedException {
         clickContentFromCarouselPremium();
     }
+    @And("select first show after search")
+    public void select_first_show_after_search() {
+        clickFirstShowAfterSearch();
+    }
 }

@@ -49,6 +49,8 @@ public class SanityPageObject extends BaseTest {
 
     public By SubscribeToWatch = By.xpath("//STRONG[text()='Subscribe to Watch']");
     public By verifyHindiFilter = By.xpath("//li[contains(text(),'Hindi')]");
+    public By firstShowAfterSearch = By.xpath("(//div[@class='searchResult_listCards__imagePoster__dfmGJ'])[1]");
+
     public void clickLogoutBtn() {
         try {
             WebDriverWait wait = new WebDriverWait(driver, 50);
@@ -61,6 +63,8 @@ public class SanityPageObject extends BaseTest {
 
     public void selectVendor(String asset) throws InterruptedException {
         try {
+            WebDriverWait wait1 = new WebDriverWait(driver, 50);
+            wait1.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//h2[contains(text(),'My Profile')]")));
             String xpath = "//img[contains(@src, '" + asset + "')]";
             System.out.println(xpath);
             WebDriverWait wait = new WebDriverWait(driver, 50);
@@ -248,7 +252,7 @@ public class SanityPageObject extends BaseTest {
 
     public void verifyListingPageFilters() {
         try {
-            WebDriverWait wait = new WebDriverWait(driver,30);
+            WebDriverWait wait = new WebDriverWait(driver, 30);
             wait.until(ExpectedConditions.visibilityOfElementLocated(listingPageLanguageFilter));
             driver.findElement(listingPageLanguageFilter).click();
             Thread.sleep(2000);
@@ -270,7 +274,7 @@ public class SanityPageObject extends BaseTest {
 
     public void verifyProfileFilters() {
         try {
-            WebDriverWait wait = new WebDriverWait(driver,30);
+            WebDriverWait wait = new WebDriverWait(driver, 30);
             wait.until(ExpectedConditions.visibilityOfElementLocated(profileMyActorsFilter));
             driver.findElement(profileMyLanguagesFilter).isDisplayed();
             driver.findElement(profileMyActorsFilter).isDisplayed();
@@ -317,8 +321,8 @@ public class SanityPageObject extends BaseTest {
         try {
             WebDriverWait wait = new WebDriverWait(driver, 30);
             wait.until(ExpectedConditions.visibilityOfElementLocated(GoToTop));
-            WebElement button =driver.findElement(By.xpath("//button[@id='toptopbtn']"));
-            JavascriptExecutor executor = (JavascriptExecutor)driver;
+            WebElement button = driver.findElement(By.xpath("//button[@id='toptopbtn']"));
+            JavascriptExecutor executor = (JavascriptExecutor) driver;
             executor.executeScript("arguments[0].click();", button);
         } catch (Throwable e) {
             Assert.fail("Go to top button not clicked");
@@ -344,8 +348,8 @@ public class SanityPageObject extends BaseTest {
         driver.findElement(ContentCarousel).click();
     }
 
-    public void clickSubscribeToWatch(){
-        WebDriverWait wait = new WebDriverWait(driver,60);
+    public void clickSubscribeToWatch() {
+        WebDriverWait wait = new WebDriverWait(driver, 60);
         wait.until(ExpectedConditions.visibilityOfElementLocated(SubscribeToWatch));
         driver.findElement(SubscribeToWatch).click();
     }
@@ -354,7 +358,7 @@ public class SanityPageObject extends BaseTest {
         Thread.sleep(5000);
         String url = driver.getCurrentUrl();
         System.out.println(url);
-        if(!url.contains("plan")){
+        if (!url.contains("plan")) {
             Assert.fail("not redirected to plans page");
         }
     }
@@ -363,6 +367,20 @@ public class SanityPageObject extends BaseTest {
         WebDriverWait wait1 = new WebDriverWait(driver, 60);
         wait1.until(ExpectedConditions.visibilityOfElementLocated(firstCarouselPremium));
         driver.findElement(firstCarouselPremium).click();
+    }
+
+    public void clickFirstShowAfterSearch() {
+        try {
+            WebDriverWait wait = new WebDriverWait(driver, 50);
+            wait.until(ExpectedConditions.visibilityOfElementLocated(firstShowAfterSearch));
+//            Thread.sleep(5000);
+            boolean displayed = driver.findElement(firstShowAfterSearch).isDisplayed();
+            if (displayed) {
+                driver.findElement(firstShowAfterSearch).click();
+            }
+        } catch (Throwable e) {
+            Assert.fail("Button not clicked");
+        }
     }
 }
 
