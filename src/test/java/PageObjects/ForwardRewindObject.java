@@ -113,7 +113,7 @@ public class ForwardRewindObject extends BaseTest {
     }
 
     public void clickFirstShow(){
-        WebDriverWait wait = new WebDriverWait(driver, 40);
+        WebDriverWait wait = new WebDriverWait(driver, 60);
         wait.until(ExpectedConditions.visibilityOfElementLocated(firstShow));
         driver.findElement(firstShow).click();
     }

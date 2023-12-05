@@ -1,5 +1,6 @@
 Feature: Regression test cases
 
+  @Reg
   Scenario:  Login with password
     Given I navigate to application
     When I click on Sign In button
@@ -8,6 +9,7 @@ Feature: Regression test cases
       | 9100381062 | Password@123 |
     And verify user is logged in
 
+    @Reg
   Scenario: Login/Logout
     Given I navigate to application
     When I click on Sign In button
@@ -17,6 +19,7 @@ Feature: Regression test cases
     And I click on User icon
     And verify user able to logout
 
+      @Reg
   Scenario: Check all pages are opening in header and bottom
     Given I navigate to application
     When I click on Sign In button
@@ -32,7 +35,7 @@ Feature: Regression test cases
     Then I click on "Photos"
     Then I click on "More"
 
-  @reg1
+  @Reg
   Scenario: Check homepage and premium page till end , no widget missing issue and loading issue should be there
     Given I navigate to application
     When I click on Sign In button
@@ -43,7 +46,7 @@ Feature: Regression test cases
     And scroll to bottom of page
     Then verify no loader issue
 
-  @reg
+  @Reg
   Scenario: Check filter on streaming now page>>more filter
     Given I navigate to application
     When I click on Sign In button
@@ -53,7 +56,7 @@ Feature: Regression test cases
     And I click on "Streaming Now"
     Then verify streaming now filters
 
-  @reg
+  @Reg
   Scenario: Verify no duplicate content is displaying on home and premium page
     Given I navigate to application
     When I click on Sign In button
@@ -89,13 +92,13 @@ Feature: Regression test cases
         Then click live show
         And Play show
         Then verify whether the episode is playing or not
-
-  Scenario: Check login with all social media redirection is working
-    Given I navigate to application
-    When I click on Sign In button
-    Then click sign in with "Google"
-    And verify redirected to "Google"
-    Then click sign in with "Apple"
-    And verify redirected to "Apple"
-    Then click sign in with "Facebook"
-    Then verify redirected to "Facebook"
+    @Reg
+    Scenario: Check login with all social media redirection is working
+      Given I navigate to application
+      When I click on Sign In button
+      Then click sign in with "Google"
+      And verify redirected to "Google"
+      Then click sign in with "Apple"
+      And verify redirected to "Apple"
+      Then click sign in with "Facebook"
+      Then verify redirected to "Facebook"

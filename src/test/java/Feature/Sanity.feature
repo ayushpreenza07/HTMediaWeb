@@ -1,6 +1,6 @@
 Feature: Sanity Test cases
 
-  @sanity
+  @Sanity
   Scenario: Check Login/Logout
     Given I navigate to application
     When I click on Sign In button
@@ -10,7 +10,7 @@ Feature: Sanity Test cases
     And I click on User icon
     And verify user able to logout
 
-  @sanity
+  @Sanity
   Scenario: Play movie/show of sony,zee,lionsgate and shemaroo etc
     Given I navigate to application
     When I click on Sign In button
@@ -30,7 +30,7 @@ Feature: Sanity Test cases
     And Play show
     Then verify whether the episode is playing or not
 
-  @sanity
+  @Sanity
   Scenario: check facing issues play here link working in sony contents
     Given I navigate to application
     When I click on Sign In button
@@ -42,7 +42,7 @@ Feature: Sanity Test cases
     Then select first show
     Then verify facing issues play here link
 
-  @sanity
+  @Sanity
   Scenario: Search any content,check all sections displaying search results
     Given I navigate to application
     When I click on Sign In button
@@ -53,7 +53,7 @@ Feature: Sanity Test cases
     Then click on see all result
     Then click on movies,shows,stories,live tv etc
 
-  @sanity
+  @Sanity
   Scenario: Check all providers displaying data
     Given I navigate to application
     When I click on Sign In button
@@ -73,7 +73,7 @@ Feature: Sanity Test cases
     And Play show
     Then verify whether the episode is playing or not
 
-  @sanity1
+  @Sanity
   Scenario: check all pages are opening
     Given I navigate to application
     When I click on Sign In button
@@ -155,8 +155,8 @@ Feature: Sanity Test cases
     Then change the language filter to hindi
     And verify filter applied for hindi language
 
-  @sanity
-  Scenario: check all pages are opening
+  @Sanity
+  Scenario: check all pages are opening content
     Given I navigate to application
     When I click on Sign In button
     And I enter username and password
@@ -170,3 +170,37 @@ Feature: Sanity Test cases
     And scroll to bottom of page
     And verify user on bottom of page
     Then click go to top button
+
+    @Sanity
+    Scenario: Verify CTA for unsubscribed user in home page
+      Given I navigate to application
+      Then click content from carousel
+      And click subscribe to watch
+      Then verify redirected to plans page
+
+  @Sanity1
+  Scenario: Verify CTA for unsubscribed user in premium page
+    Given I navigate to application
+    And I click on "Premium"
+    Then click content from carousel in premium page
+    And click subscribe to watch
+    Then verify redirected to plans page
+
+  @Sanity12
+  Scenario: Verify CTA for subscribed user in home page
+    Given I navigate to application
+    When I click on Sign In button
+    And I enter username and password
+      | username   | password     |
+      | 9100381062 | Password@123 |
+    Then click content from carousel
+
+  @Sanity12
+  Scenario: Verify CTA for subscribed user in premium page
+    Given I navigate to application
+    When I click on Sign In button
+    And I enter username and password
+      | username   | password     |
+      | 9100381062 | Password@123 |
+    And I click on "Premium"
+    Then click content from carousel in premium page

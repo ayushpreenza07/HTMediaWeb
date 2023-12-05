@@ -114,4 +114,24 @@ public class SanitySteps extends SanityPageObject {
     public void verify_user_on_bottom_of_page() {
         verifyBottomOfPage();
     }
+
+    @And("click content from carousel")
+    public void click_content_from_carousel() throws InterruptedException {
+        clickContentFromCarousel();
+    }
+
+    @And("click subscribe to watch")
+    public void click_subscribe() {
+        clickSubscribeToWatch();
+    }
+
+    @And("verify redirected to plans page")
+    public void Verify_redirected_to_plansPage() throws InterruptedException {
+        verifyPlanPage();
+    }
+
+    @And("click content from carousel in premium page")
+    public void click_content_from_carouselPremium() throws InterruptedException {
+        clickContentFromCarouselPremium();
+    }
 }

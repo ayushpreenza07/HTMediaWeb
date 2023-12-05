@@ -101,14 +101,10 @@ public class ProdObjects extends BaseTest {
 
         public void clickPlatform (String platform){
             try {
-                driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-                WebDriverWait wait = new WebDriverWait(BaseTest.driver, 25);
-                wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[contains(text(),'" + platform + "')]")));
-                boolean displayed = driver.findElement(By.xpath("//span[contains(text(),'" + platform + "')]")).isDisplayed();
-                if (displayed) {
-
-                    driver.findElement(By.xpath("//span[contains(text(),'" + platform + "')]")).click();
-                }
+                String element = "//span[contains(text(),'" + platform + "')]";
+                WebDriverWait wait = new WebDriverWait(driver, 30);
+                wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(element)));
+                driver.findElement(By.xpath(element)).click();
             } catch (Throwable e) {
                 Assert.fail("Platform not clicked");
             }

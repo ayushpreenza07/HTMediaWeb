@@ -17,9 +17,11 @@ public class RegressionObjects extends BaseTest {
     By SonyLiv =By.xpath("//img[@alt='SonyLIV']");
     By StreaminNowFilters = By.xpath("//li[@role='menuitem']/a[contains(text(),'Releases')]");
     By SignInApple = By.xpath("//a[@class='icap']");
+    By Home = By.xpath("(//span[contains(text(),'Home')])[1]");
     public void verifyHomePage() {
         try {
-            driver.findElement(By.xpath("(//span[contains(text(),'Home')])[1]")).isDisplayed();
+            WebDriverWait wait = new WebDriverWait(driver, 25);
+            wait.until(ExpectedConditions.visibilityOfElementLocated(Home));
         } catch (Throwable e) {
             Assert.fail("User is not on home page");
         }

@@ -4,6 +4,7 @@ import Utils.BaseTest;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -41,6 +42,13 @@ public class SanityPageObject extends BaseTest {
     public By languageBtn = By.xpath("//span[contains(text(),'Languages')]");
     public By hindiLanguageBtn = By.xpath("//h5[contains(text(),'Hindi')]");
 
+    public By GoToTop = By.xpath("//button[@class='MuiButtonBase-root MuiIconButton-root ottplay-237 ']");
+    public By ContentCarousel = By.xpath("(//DIV[@class='undefined homeBannerSlider__imgwrap'])[9]");
+    public By firstCarousel = By.xpath("//BUTTON[@data-glide-dir='=3']");
+    public By firstCarouselPremium = By.xpath("(//DIV[@class='imageWrapper'])[9]");
+
+    public By SubscribeToWatch = By.xpath("//STRONG[text()='Subscribe to Watch']");
+    public By verifyHindiFilter = By.xpath("//li[contains(text(),'Hindi')]");
     public void clickLogoutBtn() {
         try {
             WebDriverWait wait = new WebDriverWait(driver, 50);
@@ -55,11 +63,11 @@ public class SanityPageObject extends BaseTest {
         try {
             String xpath = "//img[contains(@src, '" + asset + "')]";
             System.out.println(xpath);
+            WebDriverWait wait = new WebDriverWait(driver, 50);
+            wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath)));
             WebElement element = driver.findElement(By.xpath(xpath));
             ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
             Thread.sleep(5000);
-            WebDriverWait wait = new WebDriverWait(driver, 50);
-            wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath)));
             driver.findElement(By.xpath(xpath)).click();
         } catch (Throwable e) {
             Assert.fail("Vendor not selected");
@@ -125,7 +133,8 @@ public class SanityPageObject extends BaseTest {
 
     public void verifyFilters() {
         try {
-            driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+            WebDriverWait wait = new WebDriverWait(driver, 30);
+            wait.until(ExpectedConditions.visibilityOfElementLocated(filterOptions));
             driver.findElement(filterOptions).isDisplayed();
         } catch (Throwable e) {
             Assert.fail("Filters not displayed");
@@ -134,7 +143,8 @@ public class SanityPageObject extends BaseTest {
 
     public void verifyFilterOnStoriesPage() {
         try {
-            driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+            WebDriverWait wait = new WebDriverWait(driver, 30);
+            wait.until(ExpectedConditions.visibilityOfElementLocated(storiesPageFilters));
             driver.findElement(storiesPageFilters).isDisplayed();
         } catch (Throwable e) {
             Assert.fail("Filters not displayed");
@@ -164,7 +174,8 @@ public class SanityPageObject extends BaseTest {
 
     private void refreshPage() {
         try {
-            driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+            WebDriverWait wait = new WebDriverWait(driver, 30);
+            wait.until(ExpectedConditions.visibilityOfElementLocated(SignInButton));
             boolean displayed = driver.findElement(SignInButton).isDisplayed();
             if (!displayed)
                 driver.navigate().refresh();
@@ -227,9 +238,6 @@ public class SanityPageObject extends BaseTest {
         try {
             String xpath = "(//ul[@id='menu-list-grow']//a[contains(text(),'" + asset + "')])[1]";
             System.out.println(xpath);
-            WebElement element = driver.findElement(By.xpath(xpath));
-            ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
-            Thread.sleep(5000);
             WebDriverWait wait = new WebDriverWait(driver, 50);
             wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath)));
             driver.findElement(By.xpath(xpath)).click();
@@ -240,6 +248,8 @@ public class SanityPageObject extends BaseTest {
 
     public void verifyListingPageFilters() {
         try {
+            WebDriverWait wait = new WebDriverWait(driver,30);
+            wait.until(ExpectedConditions.visibilityOfElementLocated(listingPageLanguageFilter));
             driver.findElement(listingPageLanguageFilter).click();
             Thread.sleep(2000);
             driver.findElement(listingPageContentRatingFilter).click();
@@ -260,6 +270,8 @@ public class SanityPageObject extends BaseTest {
 
     public void verifyProfileFilters() {
         try {
+            WebDriverWait wait = new WebDriverWait(driver,30);
+            wait.until(ExpectedConditions.visibilityOfElementLocated(profileMyActorsFilter));
             driver.findElement(profileMyLanguagesFilter).isDisplayed();
             driver.findElement(profileMyActorsFilter).isDisplayed();
             driver.findElement(profileMyGenresFilter).isDisplayed();
@@ -281,11 +293,9 @@ public class SanityPageObject extends BaseTest {
     }
 
     public void changeLanguageFilterToHindi() throws InterruptedException {
-        WebElement element = driver.findElement(languageBtn);
-        JavascriptExecutor js = (JavascriptExecutor) driver;
-        js.executeScript("arguments[0].scrollIntoView();", element);
         WebDriverWait wait = new WebDriverWait(driver, 20);
         wait.until(ExpectedConditions.visibilityOfElementLocated(languageBtn));
+        Thread.sleep(2000);
         driver.findElement(languageBtn).click();
         Thread.sleep(3000);
         driver.findElement(hindiLanguageBtn).click();
@@ -295,7 +305,8 @@ public class SanityPageObject extends BaseTest {
 
     public void verifyHindiFilter() {
         try {
-            driver.findElement(By.xpath("//li[contains(text(),'Hindi')]")).isDisplayed();
+            WebDriverWait wait = new WebDriverWait(driver, 20);
+            wait.until(ExpectedConditions.visibilityOfElementLocated(verifyHindiFilter));
         } catch (Throwable e) {
             Assert.fail("filter not applied");
         }
@@ -304,9 +315,13 @@ public class SanityPageObject extends BaseTest {
 
     public void clickGoToTop() {
         try {
-            driver.findElement(By.xpath("//button[@title='Go To Top']//span")).click();
+            WebDriverWait wait = new WebDriverWait(driver, 30);
+            wait.until(ExpectedConditions.visibilityOfElementLocated(GoToTop));
+            WebElement button =driver.findElement(By.xpath("//button[@id='toptopbtn']"));
+            JavascriptExecutor executor = (JavascriptExecutor)driver;
+            executor.executeScript("arguments[0].click();", button);
         } catch (Throwable e) {
-            Assert.fail("Button not clicked");
+            Assert.fail("Go to top button not clicked");
         }
     }
 
@@ -316,6 +331,38 @@ public class SanityPageObject extends BaseTest {
         } catch (Throwable e) {
             Assert.fail("Button not clicked");
         }
+    }
+
+    public void clickContentFromCarousel() throws InterruptedException {
+        WebDriverWait wait = new WebDriverWait(driver, 50);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(SignInButton));
+
+        WebDriverWait wait1 = new WebDriverWait(driver, 60);
+        wait1.until(ExpectedConditions.visibilityOfElementLocated(firstCarousel));
+        driver.findElement(firstCarousel).click();
+
+        driver.findElement(ContentCarousel).click();
+    }
+
+    public void clickSubscribeToWatch(){
+        WebDriverWait wait = new WebDriverWait(driver,60);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(SubscribeToWatch));
+        driver.findElement(SubscribeToWatch).click();
+    }
+
+    public void verifyPlanPage() throws InterruptedException {
+        Thread.sleep(5000);
+        String url = driver.getCurrentUrl();
+        System.out.println(url);
+        if(!url.contains("plan")){
+            Assert.fail("not redirected to plans page");
+        }
+    }
+
+    public void clickContentFromCarouselPremium() throws InterruptedException {
+        WebDriverWait wait1 = new WebDriverWait(driver, 60);
+        wait1.until(ExpectedConditions.visibilityOfElementLocated(firstCarouselPremium));
+        driver.findElement(firstCarouselPremium).click();
     }
 }
 
