@@ -129,3 +129,30 @@ Feature: Regression test cases
     Then select first show after search
     And Play show
     Then verify whether the episode is playing or not
+
+  @Reg
+  Scenario: Verify ads for unsubscribed users on all pages in web
+    Given I navigate to application
+    When I click on Sign In button
+    And I enter username and password
+      | username   | password    |
+      | 8652259082 | Neosoft@123 |
+#      And I click on "Home"
+    Then I click on "Premium"
+    And I click on "Home"
+    And scroll to bottom of page
+    And verify ads are displaying
+
+  @Reg12
+  Scenario: Verify on home page widgets are opening like in photos
+    Given I navigate to application
+    Then I click on Sign In button
+    And I enter username and password
+      | username   | password     |
+      | 9100381062 | Password@123 |
+    Then click see all in photos widgets and verify
+    And I click on "Home"
+    Then click on content if it opens
+
+
+

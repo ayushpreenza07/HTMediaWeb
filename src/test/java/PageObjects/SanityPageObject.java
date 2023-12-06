@@ -42,15 +42,15 @@ public class SanityPageObject extends BaseTest {
     public By languageBtn = By.xpath("//span[contains(text(),'Languages')]");
     public By hindiLanguageBtn = By.xpath("//h5[contains(text(),'Hindi')]");
 
-    public By GoToTop = By.xpath("//button[@class='MuiButtonBase-root MuiIconButton-root ottplay-237 ']");
+    public By GoToTop = By.xpath("//button[@class='MuiButtonBase-root MuiIconButton-root ottplay-237']");
     public By ContentCarousel = By.xpath("(//DIV[@class='undefined homeBannerSlider__imgwrap'])[9]");
     public By firstCarousel = By.xpath("//BUTTON[@data-glide-dir='=3']");
     public By firstCarouselPremium = By.xpath("(//DIV[@class='imageWrapper'])[9]");
+    public By firstCarouselPremium2 = By. xpath("//div[@class='undefined homeBannerSlider__imgwrap']/img[contains(@src, 'jpeg')]");
 
     public By SubscribeToWatch = By.xpath("//STRONG[text()='Subscribe to Watch']");
     public By verifyHindiFilter = By.xpath("//li[contains(text(),'Hindi')]");
     public By firstShowAfterSearch = By.xpath("(//div[@class='searchResult_listCards__imagePoster__dfmGJ'])[1]");
-
     public void clickLogoutBtn() {
         try {
             WebDriverWait wait = new WebDriverWait(driver, 50);

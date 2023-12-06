@@ -178,7 +178,7 @@ Feature: Sanity Test cases
       And click subscribe to watch
       Then verify redirected to plans page
 
-  @Sanity1
+  @Sanity
   Scenario: Verify CTA for unsubscribed user in premium page
     Given I navigate to application
     And I click on "Premium"
@@ -186,7 +186,7 @@ Feature: Sanity Test cases
     And click subscribe to watch
     Then verify redirected to plans page
 
-  @Sanity12
+  @Sanity
   Scenario: Verify CTA for subscribed user in home page
     Given I navigate to application
     When I click on Sign In button
@@ -195,7 +195,7 @@ Feature: Sanity Test cases
       | 9100381062 | Password@123 |
     Then click content from carousel
 
-  @Sanity12
+  @Sanity
   Scenario: Verify CTA for subscribed user in premium page
     Given I navigate to application
     When I click on Sign In button

@@ -34,4 +34,19 @@ public class RegressionSteps extends RegressionObjects {
     public void verify_redirection(String platform) throws InterruptedException {
         redirection(platform);
     }
+
+    @Then("verify ads are displaying")
+    public void verify_ads_are_displaying(){
+        verifyAds();
+    }
+
+    @And("click see all in photos widgets and verify")
+    public void click_see_all_in_photos_widgets() {
+        clickSeeAllPhotosWidget();
+    }
+
+    @And("click on content if it opens")
+    public void click_on_content_if_it_opens() {
+        clickContentAndVerify();
+    }
 }

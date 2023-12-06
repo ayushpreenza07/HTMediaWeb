@@ -138,4 +138,5 @@ public class SanitySteps extends SanityPageObject {
     public void select_first_show_after_search() {
         clickFirstShowAfterSearch();
     }
+
 }
