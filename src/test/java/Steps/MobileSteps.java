@@ -5,6 +5,7 @@ import Utils.BaseTest;
 import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.And;
 import Utils.BaseTest;
+import io.cucumber.java.en.Then;
 import org.junit.Assert;
 
 import java.util.List;
@@ -14,7 +15,7 @@ public class MobileSteps extends MobilePageObjects {
 
     @And("launch in mobile browser")
     public void launch_in_mobileBrowser() {
-            BaseTest.launchApplicationInMobileBrowser("https://www.ottplay.com/");
+        BaseTest.launchApplicationInMobileBrowser("https://www.ottplay.com/");
     }
 
     @And("click on user button")
@@ -43,6 +44,21 @@ public class MobileSteps extends MobilePageObjects {
         } catch (Throwable e) {
             Assert.fail(e.getMessage());
         }
+    }
+
+    @Then("click on sidebar")
+    public void click_on_sidebar() {
+        clickSidebar();
+    }
+
+    @Then("click user profile")
+    public void click_user_profile() {
+        clickUserProfile();
+    }
+
+    @Then("logout the user")
+    public void logout_the_user() {
+        clickLogout();
     }
 
 }

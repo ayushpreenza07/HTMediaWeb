@@ -27,17 +27,21 @@ public class MobilePageObjects extends BaseTest {
 
     public By userButton = By.xpath("//android.widget.Button[@text='user']");
     public By loginButton = By.xpath("//android.view.MenuItem[@text='dropdown icon Login']");
-   public By userName = By.xpath("//android.widget.EditText[@text='']");
-   public By Continue = By.xpath("//android.widget.Button[@text='Continue']");
-   public By password = By.xpath("//android.widget.EditText[@text='']");
-   public By loginContinue = By.xpath("//android.widget.Button[@text='Continue']");
-   public void clickUser(){
+    public By userName = By.xpath("//android.widget.EditText[@text='']");
+    public By Continue = By.xpath("//android.widget.Button[@text='Continue']");
+    public By password = By.xpath("//android.widget.EditText[@text='']");
+    public By loginContinue = By.xpath("//android.widget.Button[@text='Continue']");
+    public By sideBar = By.xpath("//android.widget.Button[@text='menu']");
+    public By userProfile = By.xpath("//android.widget.Image[@text='profile']");
+    public By logoutBtn = By.xpath("//android.view.View[@text='Logout']");
+
+    public void clickUser() {
         WebDriverWait wait = new WebDriverWait(androidDriver, 30);
         wait.until(ExpectedConditions.visibilityOfElementLocated(userButton));
         androidDriver.findElement(userButton).click();
     }
 
-    public void clickLogin(){
+    public void clickLogin() {
         WebDriverWait wait = new WebDriverWait(androidDriver, 30);
         wait.until(ExpectedConditions.visibilityOfElementLocated(loginButton));
         androidDriver.findElement(loginButton).click();
@@ -52,7 +56,7 @@ public class MobilePageObjects extends BaseTest {
 
         actions.sendKeys(androidDriver.findElement(userName), user).build().perform();
 
-   }
+    }
 
     public void enterPassword(String pass) throws InterruptedException {
         WebDriverWait wait = new WebDriverWait(androidDriver, 30);
@@ -72,19 +76,19 @@ public class MobilePageObjects extends BaseTest {
 //        if(isKeyboardOpen){
 //            androidDriver.navigate().back();
 //        }
-   }
+    }
 
     public void clickContinue() throws InterruptedException {
-       Thread.sleep(5000);
+        Thread.sleep(5000);
 //        WebDriverWait wait = new WebDriverWait(androidDriver, 30);
 //        wait.until(ExpectedConditions.visibilityOfElementLocated(Continue));
 //        androidDriver.findElement(Continue).click();
 
         MobileElement element = androidDriver.findElement(Continue);
         AndroidTouchAction touch = new AndroidTouchAction(androidDriver);
-        touch.tap (TapOptions.tapOptions ()
-                        .withElement (ElementOption.element (element)))
-                .perform ();
+        touch.tap(TapOptions.tapOptions()
+                        .withElement(ElementOption.element(element)))
+                .perform();
     }
 
     public void clickLoginContinue() throws InterruptedException {
@@ -95,10 +99,29 @@ public class MobilePageObjects extends BaseTest {
 
         MobileElement element = androidDriver.findElement(Continue);
         AndroidTouchAction touch = new AndroidTouchAction(androidDriver);
-        touch.tap (TapOptions.tapOptions ()
-                        .withElement (ElementOption.element (element)))
-                .perform ();
+        touch.tap(TapOptions.tapOptions()
+                        .withElement(ElementOption.element(element)))
+                .perform();
     }
+
+    public void clickSidebar() {
+        WebDriverWait wait = new WebDriverWait(androidDriver, 30);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(sideBar));
+        androidDriver.findElement(sideBar).click();
+    }
+
+    public void clickUserProfile() {
+        WebDriverWait wait = new WebDriverWait(androidDriver, 30);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(userProfile));
+        androidDriver.findElement(userProfile).click();
+    }
+
+    public void clickLogout() {
+        WebDriverWait wait = new WebDriverWait(androidDriver, 30);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(logoutBtn));
+        androidDriver.findElement(logoutBtn).click();
+    }
+
 
 }
 
