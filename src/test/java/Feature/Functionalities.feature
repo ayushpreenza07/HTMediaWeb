@@ -9,6 +9,7 @@ Feature: OTT Play Functionalities
       | 9100381062 | Password@123 |
     Then I click on "Premium"
     And Select "SonyLIV"
+    And click on first See all
 #    Then select first show
     And Play the show "Charlie Chopra & The Mystery Of Solang Valley"
     And Play show

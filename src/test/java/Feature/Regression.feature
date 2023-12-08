@@ -143,7 +143,7 @@ Feature: Regression test cases
     And scroll to bottom of page
     And verify ads are displaying
 
-  @Reg12
+  @Reg
   Scenario: Verify on home page widgets are opening like in photos
     Given I navigate to application
     Then I click on Sign In button

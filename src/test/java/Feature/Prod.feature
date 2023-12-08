@@ -10,7 +10,7 @@ Feature: Prod Test cases
     And I click on User icon
     Then verify Parental control is present
 
-  @prod1
+  @prod
   Scenario: verify Ott Subscribed channel rail
     Given I navigate to application
     When I click on Sign In button
@@ -20,7 +20,7 @@ Feature: Prod Test cases
     Then I click on "Premium"
     Then verify Ott channels rail
 
-  @Prod
+  @prod
   Scenario: Verify Live News, Sports, Entertainment channels, Live Music, Regional, Spiritual on Live Tv
     Given I navigate to application
     When I click on Sign In button
@@ -30,7 +30,7 @@ Feature: Prod Test cases
     Then I click on "Live TV"
     And Verify Live News, Sports, Entertainment channels, Live Music, Regional, Spiritual on Live Tv
 
-  @Prod
+  @prod
   Scenario: Verify Live TV Tamil and Telugu
     Given I navigate to application
     When I click on Sign In button
@@ -41,7 +41,7 @@ Feature: Prod Test cases
     Then click on searchPage "Live TV"
     And Verify Live TV Tamil and Telugu
 
-  @Prod
+  @prod
   Scenario: Setting page should be checked
     Given I navigate to application
     When I click on Sign In button

@@ -74,4 +74,9 @@ public class Functionalities extends FunctionalitiesObject {
         selectShow(show);
         Thread.sleep(5000);
     }
+
+    @Then("click on first See all")
+    public void click_on_first_See_all(){
+        clickSeeAllFirst();
+    }
 }

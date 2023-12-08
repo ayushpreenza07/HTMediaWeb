@@ -16,6 +16,7 @@ public class FunctionalitiesObject extends BaseTest {
 
     public By resumeButton = By.xpath("//span[contains(text(),'Resume')]");
     public By fullScreenButton = By.xpath("//i[@class='fullScreen']");
+    public By firstSeeAll = By.xpath("(//div[contains(text(),'See All')])[1]");
     public By nextEpisodeButton = By.xpath("//span[contains(text(),'Next Episode ')]");
     public By OttPlayBrandLogo = By.xpath("//img[@alt='ottplay logo']");
     public By playButton = By.xpath("//span[@class='movieDescription_playtext__U0wBf']");
@@ -166,5 +167,11 @@ public class FunctionalitiesObject extends BaseTest {
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath)));
 //        jsx.executeScript("arguments[0].click();", xpath);
         driver.findElement(By.xpath(xpath)).click();
+    }
+
+    public void clickSeeAllFirst(){
+        WebDriverWait wait = new WebDriverWait(driver, 40);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(firstSeeAll));
+        driver.findElement(firstSeeAll).click();
     }
 }
