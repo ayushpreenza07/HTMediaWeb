@@ -22,4 +22,20 @@ Feature: OTT Play Mobile Browser
     And click Sign in with Apple
     Then verify apple login page
 
+    @mobile1
     Scenario: Check Mweb all pages are opening nothing is breaking>>refresh and check sidebar will be displayed
+      Given launch in mobile browser
+      Then click on user button
+      And click login
+      And I enter username and password in mobile
+      | username   | password     |
+      | 9100381062 | Password@123 |
+      Then wait "10"
+      And click on sidebar
+      Then click on mShows
+      Then wait "10"
+      Then click on sidebar
+      Then click on mMovies
+      Then wait "10"
+      And click on sidebar
+      Then click on mNews

@@ -96,4 +96,29 @@ public class MobileSteps extends MobilePageObjects {
         navigateBack();
     }
 
+    @Then("click on mShows")
+    public void click_on_mShows() {
+        clickMshows();
+    }
+
+    @Then("click on mMovies")
+    public void click_on_mMovies() {
+        clickMmovies();
+    }
+
+    @Then("click on mNews")
+    public void click_on_mNews() {
+        clickMnews();
+    }
+    @Then("close sidebar")
+    public void click_sidebar() throws InterruptedException {
+        closeSidebar();
+    }
+
+    @Then("^wait \"([^\"]*)\"")
+    public void waitTime(String time) throws InterruptedException {
+        int delay = Integer.parseInt(time)*1000;
+        Thread.sleep(delay);
+    }
+
 }

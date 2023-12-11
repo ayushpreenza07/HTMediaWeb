@@ -42,7 +42,13 @@ public class MobilePageObjects extends BaseTest {
     public By appleLoginBtn = By.xpath("//android.view.View[@content-desc=\"Sign in with Apple\"]");
     public By googlePage = By.xpath("//android.view.View[@text=\"Sign in with Google\"]");
     public By facebookPage = By.xpath("//android.view.View[@content-desc=\"facebook\"]");
-    public By ApplePage = By.xpath("");
+    public By ApplePage = By.xpath("//android.widget.Button[@text='Menu']");
+    public By mshowsMenu = By.xpath("//android.widget.TextView[@text='Shows']");
+    public By mshowsMovie = By.xpath("//android.widget.TextView[@text='Movies']");
+
+    public By mshowsNews = By.xpath("//android.widget.TextView[@text='News']");
+
+    public By closeSideBar = By.xpath("//android.widget.Button[@text='menu']");
 
     public void clickUser() {
         WebDriverWait wait = new WebDriverWait(androidDriver, 30);
@@ -165,9 +171,33 @@ public class MobilePageObjects extends BaseTest {
         WebDriverWait wait1 = new WebDriverWait(androidDriver, 30);
         wait1.until(ExpectedConditions.visibilityOfElementLocated(ApplePage));
     }
-    public static void navigateBack() throws InterruptedException {
+    public void navigateBack() throws InterruptedException {
         Thread.sleep(4000);
         androidDriver.navigate().back();
+    }
+
+    public void clickMshows(){
+        WebDriverWait wait = new WebDriverWait(androidDriver, 30);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(mshowsMenu));
+        androidDriver.findElement(mshowsMenu).click();
+    }
+
+    public void clickMmovies(){
+        WebDriverWait wait = new WebDriverWait(androidDriver, 30);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(mshowsMovie));
+        androidDriver.findElement(mshowsMovie).click();
+    }
+
+    public void clickMnews(){
+        WebDriverWait wait = new WebDriverWait(androidDriver, 30);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(mshowsNews));
+        androidDriver.findElement(mshowsNews).click();
+    }
+
+    public void closeSidebar(){
+        WebDriverWait wait = new WebDriverWait(androidDriver, 30);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(closeSideBar));
+        androidDriver.findElement(closeSideBar).click();
     }
 
 }
