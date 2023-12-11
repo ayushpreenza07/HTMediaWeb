@@ -6,6 +6,8 @@ import io.appium.java_client.MobileElement;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.AndroidElement;
 import io.appium.java_client.android.AndroidTouchAction;
+import io.appium.java_client.android.nativekey.AndroidKey;
+import io.appium.java_client.android.nativekey.KeyEvent;
 import io.appium.java_client.remote.AndroidMobileCapabilityType;
 import io.appium.java_client.remote.MobileCapabilityType;
 import io.appium.java_client.touch.TapOptions;
@@ -34,6 +36,13 @@ public class MobilePageObjects extends BaseTest {
     public By sideBar = By.xpath("//android.widget.Button[@text='menu']");
     public By userProfile = By.xpath("//android.widget.Image[@text='profile']");
     public By logoutBtn = By.xpath("//android.view.View[@text='Logout']");
+    public By subscribeBtn = By.xpath("//android.widget.Button[@text='SUBSCRIBE']");
+    public By googleLoginBtn = By.xpath("//android.view.View[@content-desc=\"Sign in with Google\"]");
+    public By facebookLoginBtn = By.xpath("//android.view.View[@content-desc=\"Sign in with Facebook\"]");
+    public By appleLoginBtn = By.xpath("//android.view.View[@content-desc=\"Sign in with Apple\"]");
+    public By googlePage = By.xpath("//android.view.View[@text=\"Sign in with Google\"]");
+    public By facebookPage = By.xpath("//android.view.View[@content-desc=\"facebook\"]");
+    public By ApplePage = By.xpath("");
 
     public void clickUser() {
         WebDriverWait wait = new WebDriverWait(androidDriver, 30);
@@ -120,8 +129,47 @@ public class MobilePageObjects extends BaseTest {
         WebDriverWait wait = new WebDriverWait(androidDriver, 30);
         wait.until(ExpectedConditions.visibilityOfElementLocated(logoutBtn));
         androidDriver.findElement(logoutBtn).click();
+        WebDriverWait wait1 = new WebDriverWait(androidDriver, 30);
+        wait1.until(ExpectedConditions.visibilityOfElementLocated(subscribeBtn));
     }
 
+    public void clickGoogleLogin() {
+        WebDriverWait wait = new WebDriverWait(androidDriver, 30);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(googleLoginBtn));
+        androidDriver.findElement(googleLoginBtn).click();
+    }
+
+    public void clickFacebookLogin() {
+        WebDriverWait wait = new WebDriverWait(androidDriver, 30);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(facebookLoginBtn));
+        androidDriver.findElement(facebookLoginBtn).click();
+    }
+
+    public void clickAppleLogin() {
+        WebDriverWait wait = new WebDriverWait(androidDriver, 30);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(appleLoginBtn));
+        androidDriver.findElement(appleLoginBtn).click();
+    }
+
+    public void verifyGooglePage() {
+        WebDriverWait wait1 = new WebDriverWait(androidDriver, 30);
+        wait1.until(ExpectedConditions.visibilityOfElementLocated(googlePage));
+    }
+
+    public void verifyFacebookPage() {
+        WebDriverWait wait1 = new WebDriverWait(androidDriver, 30);
+        wait1.until(ExpectedConditions.visibilityOfElementLocated(facebookPage));
+    }
+
+    public void verifyApplePage() {
+        WebDriverWait wait1 = new WebDriverWait(androidDriver, 30);
+        wait1.until(ExpectedConditions.visibilityOfElementLocated(ApplePage));
+    }
+    public static void navigateBack() throws InterruptedException {
+        Thread.sleep(4000);
+//        mdriver.navigate().back();
+        driver.navigate().back();
+    }
 
 }
 

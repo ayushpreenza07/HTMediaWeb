@@ -61,4 +61,39 @@ public class MobileSteps extends MobilePageObjects {
         clickLogout();
     }
 
+    @Then("click Sign in with Google")
+    public void click_Sign_in_with_Google() {
+        clickGoogleLogin();
+    }
+
+    @And("click Sign in with Facebook")
+    public void click_Sign_in_with_Facebook() {
+        clickFacebookLogin();
+    }
+
+    @And("click Sign in with Apple")
+    public void click_Sign_in_with_Apple() {
+        clickAppleLogin();
+    }
+
+    @And("verify google login page")
+    public void verify_google_login_page() {
+        verifyGooglePage();
+    }
+
+    @And("verify facebook login page")
+    public void verify_facebook_login_page() {
+        verifyFacebookPage();
+    }
+
+    @And("verify apple login page")
+    public void verify_apple_login_page() {
+        verifyApplePage();
+    }
+
+    @Then("navigate back")
+    public void navigate_back() throws InterruptedException {
+        navigateBack();
+    }
+
 }
