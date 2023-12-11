@@ -167,8 +167,7 @@ public class MobilePageObjects extends BaseTest {
     }
     public static void navigateBack() throws InterruptedException {
         Thread.sleep(4000);
-//        mdriver.navigate().back();
-        driver.navigate().back();
+        androidDriver.navigate().back();
     }
 
 }
